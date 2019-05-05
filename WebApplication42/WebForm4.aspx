@@ -7,6 +7,15 @@
 
      <style type="text/css">
 
+         
+        body
+        {
+
+            background-image:url(poyadina.png);
+
+        }
+
+
         .glavni{width:70%;
                 margin:auto;
                 display:flex;

@@ -20,8 +20,22 @@ namespace WebApplication42
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            stranaBackTrack = Request.QueryString["id"];
-            vlasnik = Request.QueryString["vlasnik"];
+            Response.Cache.SetNoStore();
+
+            if (Session["USERNAME"].ToString() == "")
+            {
+                stranaBackTrack = Request.QueryString["id"];
+                vlasnik = Request.QueryString["vlasnik"];
+
+            }
+
+            else
+            {
+
+                Response.Redirect("WebForm1.aspx");
+
+            }
+            
 
         }
 

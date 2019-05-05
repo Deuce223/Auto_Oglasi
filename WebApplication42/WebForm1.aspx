@@ -13,6 +13,13 @@
 
           }*/
 
+         /*body
+         {
+
+            background-image:url(lightpaperfibers.png);
+
+         }*/
+
          .oglas{
 
              width:60%;
@@ -21,7 +28,7 @@
              justify-content:center;
              align-items:center;
              /*background-color:white;*/
-             border-radius: 20% 0% 0% 80%;
+             border-radius: 20% 70% 40% 80%;
              border-bottom:2px red solid;
              /*box-shadow: 9px 10px 10px -2px rgba(0,0,0,0.08);*/
             /*box-shadow: inset 2px -33px 19px -15px rgba(240,231,240,1);*/
