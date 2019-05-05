@@ -99,12 +99,34 @@ namespace WebApplication42
             conn.Open();
             int redni = (int)komanda.ExecuteScalar();
             SqlCommand komanda1 = new SqlCommand("INSERT INTO TELEFONI(TELEFON,KORISNIK) VALUES(" + "'" + neki[5] + "', " + redni + ")", conn);
+
+         
+
             //napisati store proceduru za ovaj insert!!!!!!!!
 
             komanda1.ExecuteNonQuery();
             conn.Close();
 
-          //  string link = "WebForm1.aspx";
+
+            if (neki.Length > 6)
+            {
+
+                int br = neki.Length - 6;
+                for (int counter = 0; counter < br; counter++)
+                {
+
+                    SqlCommand komanda2 = new SqlCommand("INSERT INTO TELEFONI(TELEFON,KORISNIK) VALUES(" + "'" + neki[neki.Length - 1 - counter] + "', " + redni + ")", conn);
+                    conn.Open();
+                    komanda2.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+
+
+            }
+
+            //  string link = "WebForm1.aspx";
 
             MailMessage msg = new MailMessage();
             SmtpClient klijent = new SmtpClient();

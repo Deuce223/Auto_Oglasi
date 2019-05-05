@@ -121,7 +121,7 @@
                      </div>
 
 
-            <div class="rezultat" style="margin-top:5px;margin-bottom:5px;color:red;font-family:Arial, Helvetica, sans-serif">
+            <div class="rezultat" style="margin-top:5px;margin-bottom:5px;color:red;font-family:Arial, Helvetica, sans-serif;height:15px;">
 
 
          </div>

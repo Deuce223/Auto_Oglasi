@@ -8,7 +8,7 @@
      <style type="text/css">
 
          
-        body
+        /*body
         {
 
             background-image:url(poyadina.png);
@@ -28,7 +28,106 @@
 
             width:220px;
 
+        }*/
+
+
+
+            body{
+
+            background-image:url(poyadina.png);
+
         }
+
+        .modal{
+
+            position:absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+           
+
+
+        }
+
+        .glavni{
+
+            width:450px;
+            height:730px;
+            border:1px solid #0094ff;
+            border-radius:5px;
+            margin:auto;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            box-shadow: 3px 4px 16px 1px rgba(0,0,0,0.6);
+            background-color:white;
+            flex-direction:column;
+            background-color:white;
+
+
+        }
+
+        .row{
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:300px;
+            height:45px;
+            margin-top:7px;
+            margin-bottom:7px;
+       
+
+
+        }
+
+        input[type=button]{
+
+
+            height:34px;
+            width:80%;
+            background-image:linear-gradient(to right,#038afe, #8cc9fc 50%, #038afe );
+            color:white;
+            border:none;
+            margin-top:10px;
+
+        }
+
+          input[type=email]{
+
+
+            height:26px;
+            width:80%;
+            margin-bottom:15px;
+
+        }
+
+        input[type=text]{
+
+
+            height:26px;
+            width:80%;
+            margin-bottom:15px;
+
+
+        }
+ 
+        
+        input[type=password]{
+
+
+            height:26px;
+            width:80%;
+            margin-bottom:15px;
+
+
+        }
+
      </style>
 
     <script src="jquery-3.3.1.min.js"></script>
@@ -38,22 +137,33 @@
     <form id="form1" runat="server">
         <div class="glavni">
 
-          <input type="text" oninput="provera(this)" name="korisnik" onblur="regular(this)" /><label>Korisnicko ime</label>
-          <input type="password" name="lozinka" oninput="regular(this)" /><label>Lozinka</label>
-          <input type="password" name="druga_lozinka" oninput="regular(this)" /><label>Ponovi Lozinku</label>
-          <input type="email" oninput="provera(this)"  name="email" onblur="regular(this)"/><label>Email</label>
-          <input type="text" name="ime" oninput="regular(this)" /><label>Ime</label>
-          <input type="text" name="prezime" oninput="regular(this)"/><label>Prezime</label>
-          <input type="text" name="mob1" oninput="regular(this)" /><label>Mobilni telefon 1</label>
-          <input type="text" name="mob2" oninput="regular(this)" /><label>Mobilni telefon 2</label>
-          <input type="text" name="fixni" oninput="regular(this)" /><label>Fiksni telefon</label>
+          <label>Korisnicko ime *</label>
+          <input type="text" oninput="provera(this)" name="korisnik" onblur="regular(this)" />
+          <label>Lozinka *</label>
+          <input type="password" name="lozinka" oninput="regular(this)" />
+          <label>Ponovi Lozinku</label>
+          <input type="password" name="druga_lozinka" oninput="regular(this)" />
+          <label>Email *</label>
+          <input type="email" oninput="provera(this)"  name="email" onblur="regular(this)"/>
+          <label>Ime *</label>
+          <input type="text" name="ime" oninput="regular(this)" />
+          <label>Prezime *</label>
+          <input type="text" name="prezime" oninput="regular(this)"/>
+          <label>Mobilni telefon 1 *</label>
+          <input type="text" name="mob1" oninput="regular(this)" />
+          <label>Mobilni telefon 2 (opciono)</label>
+          <input type="text" name="mob2" oninput="regular(this)" />
+          <label>Fiksni telefon (opciono)</label> 
+          <input type="text" name="fixni" oninput="regular(this)" />
 
-            <input type="button" id="dugme" onclick="return false"/>
+           <input type="button" id="dugme" onclick="return false" value="REGISTRUJ SE"/>
+
+             <div id="moj" style="margin-top:15px;height:15px;"></div>
 
         </div>
     </form>
 
-    <div id="moj" ></div>
+   
 
     <script>
 
@@ -129,7 +239,7 @@
             if (rez == "OK") {
 
                 
-                element.style.backgroundColor = "green";
+                element.style.backgroundColor = "white";
                 document.getElementById("moj").innerHTML = "";
 
                 if (element.getAttribute("name") == "korisnik") {
@@ -266,7 +376,7 @@
                 if (reg6.test(element.value) && reg7.test(element.value) && reg8.test(element.value) && !reg9.test(element.value) && element.value.length > 6) {
 
 
-                    element.style.backgroundColor = "green";
+                    element.style.backgroundColor = "white";
                     lozinka = true;
 
 
@@ -314,7 +424,7 @@
                 else {
 
                     
-                    element.style.backgroundColor = "green";
+                    element.style.backgroundColor = "white";
                     ime = true;
 
                       if (element.getAttribute("name") == "ime") {
@@ -341,7 +451,7 @@
                 if (element.value == document.getElementsByName("lozinka")[0].value) {
 
 
-                    element.style.backgroundColor = "green";
+                    element.style.backgroundColor = "white";
                     lozinka_opet = true;
 
                 }
@@ -365,7 +475,7 @@
                 if (reg1.test(element.value)) {
 
 
-                    element.style.backgroundColor = "green";
+                    element.style.backgroundColor = "white";
 
                     if (element.getAttribute("name") == "mob1") {
 
@@ -410,7 +520,7 @@
 
                 if (reg1.test(element.value)) {
 
-                    element.style.backgroundColor = "green";
+                    element.style.backgroundColor = "white";
                     fiksni = true;
 
                    }
@@ -444,15 +554,23 @@
 
                     var nizPodataka = [];
 
-                    for (i = 0; i < kor1; i++) {
+                    for (i = 0; i < kor1; i++)
+                    {
 
-                        if (i == 2) {
+                        if (i == 2)
+                        {
 
                             continue;
 
                         }
 
-                        nizPodataka.push(document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[i].value);
+                        if (document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[i].value != "")
+                        {
+
+                                nizPodataka.push(document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[i].value);
+
+                        }
+                    
 
 
                     }
@@ -467,7 +585,7 @@
                         data: JSON.stringify(objekatSlanje),
                         success: function (result) {
 
-                          //  alert("radi");
+                            //  alert("radi");
                             location.href = result.d;
                             //location.href = "WebForm1.aspx";
 
@@ -480,6 +598,61 @@
 
                         }
                     })
+                }
+
+
+                else {
+
+                    korisnik && lozinka && lozinka_opet && email && ime && prezime && mobilni1
+                    if (korisnik == false)
+                    {
+
+                         document.getElementsByName("korisnik")[0].style.backgroundColor = "red";
+
+                    }
+                
+                    if (lozinka == false)
+                    {
+                       
+                         document.getElementsByName("lozinka")[0].style.backgroundColor = "red";
+
+                    }
+
+                    if (lozinka_opet == false)
+                    {
+
+                         document.getElementsByName("druga_lozinka")[0].style.backgroundColor = "red";
+
+                    }
+
+                    if (email == false)
+                    {
+
+                          document.getElementsByName("email")[0].style.backgroundColor = "red";
+
+                    }
+
+                    if (ime == false)
+                    {
+
+                         document.getElementsByName("ime")[0].style.backgroundColor = "red";
+
+                    }
+
+                    if (prezime == false)
+                    {
+
+                         document.getElementsByName("prezime")[0].style.backgroundColor = "red";
+
+                    }
+
+                    if (mobilni1 == false)
+                    {
+
+                         document.getElementsByName("mob1")[0].style.backgroundColor = "red";
+
+                    }
+
                 }
             })
         })
