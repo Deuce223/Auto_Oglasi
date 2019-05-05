@@ -48,7 +48,22 @@ namespace WebApplication42
             string porekloVozila = context.Request["porekloVozila"];
             string registrovanDo = context.Request["registrovanDo"];
             string klima = context.Request["klima"];
-            string cena = context.Request["cena"];
+            string cena;
+
+            if (context.Request["cena"] == "")
+            {
+
+                cena = "NULL";
+
+            }
+
+            else
+            {
+
+                cena = context.Request["cena"];
+
+            }
+        
             string lokacija = context.Request["lokacija"];
             string zamena = context.Request["zamena"];
 
