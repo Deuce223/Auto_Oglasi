@@ -1,4 +1,4 @@
-->**AUTO OGLASI PROJEKAT**
+**AUTO OGLASI PROJEKAT**
 
 
 
@@ -93,4 +93,4 @@ dostupne.Izabrane vrednosti se posle putem ajax poziva salju odabranoj web
 metodi koja će vršiti unos ili izmenu u bazi.
 
 Aplikacija ima responsive dizajn koji je postignut uz pomoć FLEX-a i css media
-kverija.<-
+kverija.
