@@ -1,9 +1,5 @@
 **AUTO OGLASI PROJEKAT**
 
-
-
-
-
 Auto oglasi je web aplikacija koja služi za oglašavanje polovnih vozila i
 pretraživanje postojećih oglasa koji se nalaze na sajtu.
 
@@ -52,9 +48,7 @@ telefona kako bi registracija bila uspešna.
 
 TEHNIČKE INFORMACIJE
 
-
 **BAZA**
-
 
 1.Baza se sastoji iz 24 tabele.Glava tabela Auti poseduje sve informacije koje
 ce posedovati jedan oglas bez obzira o kom autu je reč.Dodatna oprema automobila
@@ -73,9 +67,7 @@ foreign key-a sa tabelom Chat, kao i sa tabelom Korisnici.
 Ostale tabele su rečnici koji dešifruju karakteristike vozila i te tabele su
 preko foreign key-a povezane sa tabelom Auti.
 
-
 **APLIKACIJA**
-
 
 Stranica za pretragu je klijentska stranica koja preko ajax poziva dobije
 rezultate iz odgovarajuće web methode i dobijeni rezultat konvertuje u
@@ -91,6 +83,10 @@ Stranice za unos i izmenu oglasa su kombinacija serveskog i klijentskog nacina
 rada, sastoje se iz asp kontrola koje se pune iz baze sa vrednostima koje su
 dostupne.Izabrane vrednosti se posle putem ajax poziva salju odabranoj web
 metodi koja će vršiti unos ili izmenu u bazi.
+
+Slike za svaki auto se nalaze u direktorijumu cije je ime ID automobile iz
+tabele AUTI.Svi direktorijumi sa slikama se nalaze u direktorijumu Slike u
+okviru projekta.
 
 Aplikacija ima responsive dizajn koji je postignut uz pomoć FLEX-a i css media
 kverija.
