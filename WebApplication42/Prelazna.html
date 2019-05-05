@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<style>
+
+    .flex{
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+    }
+
+
+</style>
+
+<body>
+
+    <div class="flex">
+
+        <div id="moj" name="moj"><h3></h3></div>
+    </div>
+
+
+    <script>
+
+        $("body").css("cursor", "progress");
+
+        $(document).ready(function () {
+
+            //$("body").css("cursor", "progress");
+
+            var x = location.href;
+            var lokacija = x.lastIndexOf("=") + 1;
+            var kveriString = x.substring(lokacija);
+            
+
+            if (kveriString == "uspeh") {
+
+
+                $("#moj").find("h3").text("EMAIL VAM JE POSLAT, POTVRDITE REGISTRACIJU ODLASKOM NA LINK U EMAIL-U");              
+                setTimeout(redirect, 7000);
+                
+
+            }
+
+            else {
+
+
+                $("#moj").find("h3").text("mejl nije poslat, ponovo poslati mejl??kako??");
+                setTimeout(redirect, 7000);
+                
+
+            }
+
+
+        })
+
+
+        function redirect() {
+
+
+            location.href = "WebForm1.aspx";
+        }
+
+    </script>
+
+</body>
+</html>

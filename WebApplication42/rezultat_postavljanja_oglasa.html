@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+
+   
+
+       #postavka{
+
+           cursor:pointer;
+           margin:15px;
+           
+       }
+
+       #pretraga{
+
+           cursor:pointer;
+           margin:15px;
+
+       }
+
+       #postavka:hover{
+
+
+           color:red;
+       }
+
+       #pretraga:hover{
+
+
+           color:red;
+       }
+
+       .flex{
+
+
+           display:flex;
+           justify-content:center;
+           align-items:center;
+           width:70%;
+           margin:auto;
+
+       }
+
+    </style>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body onload="provera()">
+
+    <div class="flex">
+    <div id="moj"><h3>USPESNO STE POSTAVILI OGLAS!</h3></div>
+
+    </div>
+
+    <div class="flex">
+
+        <div id="pretraga">POVRATAK NA PRETRAGU</div>
+        <div id="postavka">POVRATAK NA POSTAVLJANJE OGLASA</div>
+
+    </div>
+    <script>
+
+
+        function provera() {
+
+
+            var adresa = window.location.href;
+            var pristupIndex = adresa.lastIndexOf("=") + 1;
+            //alert(pristupIndex);
+            var pristup = adresa.substr(pristupIndex);
+            //alert(pristup);
+
+            if (pristup == "postavljanje") {
+
+
+                document.getElementById("moj").innerHTML = "USPESNO STE POSTAVILI OGLAS";
+
+            }
+
+            else {
+
+
+                document.getElementById("moj").innerHTML = "USPESNO STE IZMENILI OGLAS";
+
+            }
+
+            //var lokacijaIndex = adresa.indexOf("=") + 1 ;
+            //var ee = adresa.indexOf("&") - 1;
+            //alert(lokacijaIndex);
+            //var poreklo = adresa.substring(lokacijaIndex, ee);
+            //alert(poreklo);
+
+
+        }
+
+        $(document).ready(function () {
+
+            $("#pretraga").click(function () {
+
+                location.href = "WebForm1.aspx";
+
+
+            })
+
+            $("#postavka").click(function () {
+
+                location.href = "Postavljanje.aspx";
+
+
+            })
+
+
+        })
+
+
+
+    </script>
+</body>
+</html>

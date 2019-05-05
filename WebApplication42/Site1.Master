@@ -1,0 +1,334 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebApplication42.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <script src="jquery-3.3.1.min.js"></script>
+
+     <style type="text/css">
+
+        body{
+
+            margin:0px;
+            padding:0px;
+        }
+
+        img{
+
+
+            max-height:9%;
+            max-width:9%;
+        }
+
+        #header{
+
+            width:100%;
+            background-color:black;
+            overflow:auto;
+            margin:0px;
+        }
+
+        .hederi{
+            
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            float:right;
+            width:7%;
+            text-align:center;
+            font-size:small;
+            color:white;
+
+        }
+        .hederi:before{
+
+            
+            content:"";
+            display:block;
+            padding-top:30%;
+
+
+        }
+
+       .hederi:hover{
+
+          cursor:pointer;
+          
+
+       }
+       
+       #razmak{
+
+           width:100%;
+           height:200px;
+
+       }
+
+       #footer{
+
+
+           width:700px;
+           height:200px;
+           display:flex;
+           justify-content:center;
+           align-items:flex-end;
+           background-color:black;
+           margin:auto;
+
+
+       }
+
+
+       /*.nevidljiv{
+
+           display:none;
+
+       }*/
+
+       @media only screen and (max-width:1600px){
+
+           .hederi{
+
+               width:10%;
+           }
+
+
+       }
+
+          @media only screen and (max-width:1050px){
+
+           .hederi{
+
+               width:18%;
+           }
+
+
+       }
+
+             @media only screen and (max-width:700px){
+
+           .hederi{
+
+               float:left;
+               width:33%;
+           }
+           
+           
+           #footer{
+
+
+               width:100%;
+               
+           }
+
+
+       }
+
+                     @media only screen and (max-width:500px){
+
+           .hederi{
+
+               float:none;
+               width:100%;
+           }
+
+           .hederi:before{
+
+               padding-top:15%;
+
+           }
+
+           #footer{
+
+
+               width:100%;
+               
+           }
+       }
+
+    </style>
+
+
+
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+
+
+    <form id="form1" runat="server">
+
+          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+
+            <ContentTemplate>
+              
+
+                         <div id="header">
+
+        <div id="korisnik" class="hederi" runat="server" onclick="redirekt()"></div>
+        <div id="logOut" class="hederi" runat="server" onclick="moja2()">LOG OUT</div>
+        <div id="log" class="hederi" runat="server" onclick="moja3()">ULOGUJ SE</div>
+        <div id="prijava" class="hederi" runat="server" onclick="moja4()">REGISTRUJ SE</div>
+        <div id="postavi_oglas" class="hederi" style="background-color:dodgerblue" runat="server" onclick="moja1()">POSTAVI OGLAS</div>
+
+    </div>
+
+
+            </ContentTemplate>
+
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
+            </Triggers>
+
+        </asp:UpdatePanel>
+
+           <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" style="display:none" />
+
+      
+     
+
+
+     
+   
+
+
+
+
+
+    <div style="clear:both"></div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+            </asp:ContentPlaceHolder>
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+    </form>
+
+    <div id="razmak"></div>
+    <div id="footer">
+
+       <p style="color:white;">&copy; 2019</p> 
+
+    </div>
+
+
+    <script>
+
+        function moja1() {
+
+            location.href = "Postavljanje.aspx";
+
+        }
+
+
+        function moja2() {
+
+
+            document.getElementById("Button1").click();
+
+
+        }
+
+        function moja3() {
+
+
+            location.href = "Login.aspx";
+
+        }
+
+        function moja4() {
+
+
+            location.href = "WebForm4.aspx";
+        }
+
+        //$(document).ready(function () {
+
+        //    document.getElementById("postavi_oglas").addEventListener("click", function () {
+
+        //        location.href = "Postavljanje.aspx";
+
+
+        //    })
+
+            
+        //    document.getElementById("logOut").addEventListener("click", function () {
+
+
+        //        document.getElementById("Button1").click();
+                
+
+
+
+        //    })
+
+        //    document.getElementById("log").addEventListener("click", function () {
+
+        //        location.href = "Login.aspx";
+
+
+        //    })
+
+
+            //$("#logOut").click(function () {
+
+            //    $.ajax({
+            //        url: "Site1.Master.cs/LogOut",
+            //        method: "POST",
+            //        contentType: "application/json; charset=utf-8",
+            //        data: JSON.stringify({ podatak: "Milos" }),
+            //        success: function (result) {
+
+            //            alert("poziv uspesan!");
+            //        },
+            //        error: function (result) {
+
+            //            alert("poziv neuspesan");
+
+            //        }
+
+            //    })
+
+
+
+            //})
+
+
+
+
+
+        //});
+
+        //window.onpopstate = function () {
+
+        //    location.reload(true);
+
+        //}
+
+
+        function redirekt() {
+
+            $("body").css("cursor", "progress");
+            location.href = "Korisnicka_strana.aspx";
+
+
+        }
+
+      
+    </script>
+
+</body>
+</html>
