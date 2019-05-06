@@ -295,10 +295,32 @@ namespace WebApplication42
                             //if (k == "registrovan_do")
                             //{
 
-                            SqlCommand update_glavni = new SqlCommand("UPDATE AUTI SET " + k + " = " + "'" + check + "'" + " WHERE ID = " + idVozila, conn);
-                            conn.Open();
-                            update_glavni.ExecuteNonQuery();
-                            conn.Close();
+                            if(k == "cena")
+                            {
+
+                                SqlCommand update_glavni = new SqlCommand("UPDATE AUTI SET " + k + " = " +  check  + " WHERE ID = " + idVozila, conn);
+                                conn.Open();
+                                update_glavni.ExecuteNonQuery();
+                                conn.Close();
+
+
+                            }
+
+                            else
+                            {
+
+                                SqlCommand update_glavni = new SqlCommand("UPDATE AUTI SET " + k + " = " + "'" + check + "'" + " WHERE ID = " + idVozila, conn);
+                                conn.Open();
+                                update_glavni.ExecuteNonQuery();
+                                conn.Close();
+
+
+                            }
+
+                            //SqlCommand update_glavni = new SqlCommand("UPDATE AUTI SET " + k + " = " + "'" + check + "'" + " WHERE ID = " + idVozila, conn);
+                            //conn.Open();
+                            //update_glavni.ExecuteNonQuery();
+                            //conn.Close();
 
 
                             //}

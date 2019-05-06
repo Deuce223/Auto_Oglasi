@@ -804,6 +804,25 @@
                      var Registrovan_Do = document.getElementById("ContentPlaceHolder5_DropDownList11").value;
                      var klima = document.getElementById("ContentPlaceHolder5_DropDownList12").value;
                      var cena = document.getElementById("ContentPlaceHolder5_TextBox6").value;
+
+                  
+                     if (cena == "" || cena == "0")
+                     {
+
+                         cena = "NULL";
+
+                     }
+
+                     if (cena.indexOf("-") != -1)
+                     {
+
+                         cena = cena.substr(1);
+
+
+                     }
+
+                     alert(cena);
+
                      var lokacija = document.getElementById("ContentPlaceHolder5_DropDownList13").value;
                      var zamena = document.getElementById("ContentPlaceHolder5_DropDownList14").value;
                      var opis = document.getElementsByTagName("textarea")[0].value;
