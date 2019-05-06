@@ -42,15 +42,15 @@ namespace WebApplication42
 
             DataTable podaci = new DataTable();
             DataTable oprema = new DataTable();
-            DataTable slike = new DataTable();
+        //    DataTable slike = new DataTable();
             DataTable telefoni = new DataTable();
 
             adapt.Fill(set);
 
             podaci = set.Tables[0];
-            oprema = set.Tables[2];
-            slike = set.Tables[1];
-            telefoni = set.Tables[3];
+            oprema = set.Tables[1];
+        //    slike = set.Tables[1];
+            telefoni = set.Tables[2];
 
             OtisakNovi C1 = new OtisakNovi();
             C1.marka = podaci.Rows[0][1].ToString();
@@ -89,18 +89,51 @@ namespace WebApplication42
 
             }
 
-            if(slike.Rows.Count != 0)
-            {
+            //if(slike.Rows.Count != 0)
+            //{
 
-                for(int ggg = 0; ggg< slike.Rows.Count; ggg++)
+            //    for(int ggg = 0; ggg< slike.Rows.Count; ggg++)
+            //    {
+
+            //        pictures.Add(slike.Rows[ggg]["Slika"].ToString());
+
+            //    }
+
+            //}
+
+            string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ID + "\\";
+
+            if (Directory.Exists(putanja))
+            {
+                for(int brojac1 = 0; brojac1 < 10; brojac1++)
                 {
 
-                    pictures.Add(slike.Rows[ggg]["Slika"].ToString());
+                    if(File.Exists(putanja + brojac1 + ".jpg"))
+                    {
+
+                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".jpg");
+
+                    }
+
+                    else if(File.Exists(putanja + brojac1 + ".png"))
+                    {
+
+                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".png");
+
+
+                    }
+
+                    else
+                    {
+
+                        break;
+
+                    }
+
 
                 }
 
             }
-
     
 
 

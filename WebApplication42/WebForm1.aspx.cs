@@ -416,6 +416,13 @@ namespace WebApplication42
 
                         }
 
+                        else
+                        {
+
+                            ff.slika = "";
+
+                        }
+
                     }
 
 
@@ -507,6 +514,13 @@ namespace WebApplication42
 
 
 
+                    }
+
+                    else
+                    {
+
+
+                        ff.slika = "";
                     }
 
                 }
