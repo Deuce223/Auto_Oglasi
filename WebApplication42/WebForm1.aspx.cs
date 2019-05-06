@@ -11,6 +11,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace WebApplication42
 {
@@ -316,7 +317,7 @@ namespace WebApplication42
             
 
             StringBuilder naredba1 = new StringBuilder();
-            naredba1.Append("SELECT Auti.ID, Marka.Naziv, Modeli.Model, Karoserija.Naziv, Gorivo.Naziv, Vrata.Naziv, Lokacija.Naziv, Unos_vreme, (SELECT TOP 1 Slika FROM Slike WHERE Automobil = Auti.ID) as slika, Cena, Godiste, Kilometraza, Oznaka, Kubikaza, Menjac.Naziv, Snaga, Klima.Naziv FROM Auti INNER JOIN Marka ON Marka.ID = Auti.Marka INNER JOIN Modeli ON Modeli.ID = AUTI.Model INNER JOIN Karoserija ON Karoserija.ID = Auti.Karoserija INNER JOIN Gorivo ON Gorivo.ID = Auti.Gorivo INNER JOIN Vrata ON Vrata.ID = Auti.Vrata INNER JOIN Lokacija ON Lokacija.ID = Auti.Lokacija INNER JOIN Menjac ON Menjac.ID = Auti.Menjac INNER JOIN KLIMA ON KLIMA.ID = AUTI.Klima ");
+            naredba1.Append("SELECT Auti.ID, Marka.Naziv, Modeli.Model, Karoserija.Naziv, Gorivo.Naziv, Vrata.Naziv, Lokacija.Naziv, Unos_vreme, Cena, Godiste, Kilometraza, Oznaka, Kubikaza, Menjac.Naziv, Snaga, Klima.Naziv FROM Auti INNER JOIN Marka ON Marka.ID = Auti.Marka INNER JOIN Modeli ON Modeli.ID = AUTI.Model INNER JOIN Karoserija ON Karoserija.ID = Auti.Karoserija INNER JOIN Gorivo ON Gorivo.ID = Auti.Gorivo INNER JOIN Vrata ON Vrata.ID = Auti.Vrata INNER JOIN Lokacija ON Lokacija.ID = Auti.Lokacija INNER JOIN Menjac ON Menjac.ID = Auti.Menjac INNER JOIN KLIMA ON KLIMA.ID = AUTI.Klima ");
             C1.Naredba(naredba1, C1);
             naredba1.Append(" OFFSET " + C1.offset + " ROWS FETCH NEXT 20 ROWS ONLY");
             SqlConnection conn = new SqlConnection(Konekcija.CS());
@@ -368,15 +369,17 @@ namespace WebApplication42
                         B1.vrata = citac[5].ToString();
                         B1.lokacija = citac[6].ToString();
                         B1.vreme = Convert.ToDateTime(citac[7]).Day.ToString() + "." + Convert.ToDateTime(citac[7]).Month.ToString() + "." + Convert.ToDateTime(citac[7]).Year.ToString();
-                        B1.slika = citac[8].ToString();
-                        B1.cena = citac[9].ToString();
-                        B1.godiste = citac[10].ToString();
-                        B1.kilometraza = citac[11].ToString();
-                        B1.oznaka = citac[12].ToString();
-                        B1.kubikaza = citac[13].ToString();
-                        B1.menjac = citac[14].ToString();
-                        B1.snaga_konja = citac[15].ToString(); ;
-                        B1.klima = citac[16].ToString();
+                     //   B1.slika = citac[8].ToString();
+                        B1.cena = citac[8].ToString();
+                        B1.godiste = citac[9].ToString();
+                        B1.kilometraza = citac[10].ToString();
+                        B1.oznaka = citac[11].ToString();
+                        B1.kubikaza = citac[12].ToString();
+                        B1.menjac = citac[13].ToString();
+                        B1.snaga_konja = citac[14].ToString(); ;
+                        B1.klima = citac[15].ToString();
+
+                       
 
                         privremena.Add(B1);
 
@@ -385,6 +388,37 @@ namespace WebApplication42
                     }
 
                     conn.Close();
+
+                    foreach(Otisak ff in privremena)
+                    {
+
+                        string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ff.ID + "\\";
+                        if (Directory.Exists(putanja))
+                        {
+                            
+                           if(File.Exists(putanja + "0.jpg"))
+                            {
+
+                                ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
+
+
+                            }
+
+                           else if(File.Exists(putanja + "0.png"))
+                           {
+
+
+                                ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+
+                            }
+
+
+
+                        }
+
+                    }
+
+
 
                     A1.podaci = privremena;
 
@@ -430,19 +464,50 @@ namespace WebApplication42
                     B1.vrata = citac[5].ToString();
                     B1.lokacija = citac[6].ToString();
                     B1.vreme = Convert.ToDateTime(citac[7]).Day.ToString() + "." + Convert.ToDateTime(citac[7]).Month.ToString() + "." + Convert.ToDateTime(citac[7]).Year.ToString();
-                    B1.slika = citac[8].ToString();
-                    B1.cena = citac[9].ToString();
-                    B1.godiste = citac[10].ToString();
-                    B1.kilometraza = citac[11].ToString();
-                    B1.oznaka = citac[12].ToString();
-                    B1.kubikaza = citac[13].ToString();
-                    B1.menjac = citac[14].ToString();
-                    B1.snaga_konja = citac[15].ToString(); ;
-                    B1.klima = citac[16].ToString();
+                    //B1.slika = citac[8].ToString();
+                    B1.cena = citac[8].ToString();
+                    B1.godiste = citac[9].ToString();
+                    B1.kilometraza = citac[10].ToString();
+                    B1.oznaka = citac[11].ToString();
+                    B1.kubikaza = citac[12].ToString();
+                    B1.menjac = citac[13].ToString();
+                    B1.snaga_konja = citac[14].ToString(); ;
+                    B1.klima = citac[15].ToString();
 
                     privremena.Add(B1);
 
 
+
+                }
+
+                //ovde isto prepraviti slike!!!1
+
+                foreach (Otisak ff in privremena)
+                {
+
+                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ff.ID + "\\";
+                    if (Directory.Exists(putanja))
+                    {
+
+                        if (File.Exists(putanja + "0.jpg"))
+                        {
+
+                            ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
+
+
+                        }
+
+                        else if (File.Exists(putanja + "0.png"))
+                        {
+
+
+                            ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+
+                        }
+
+
+
+                    }
 
                 }
 
@@ -466,13 +531,6 @@ namespace WebApplication42
 
                 string dzejsonVrati = JsonConvert.SerializeObject(A1);
                 return dzejsonVrati;
-
-
-
-                
-
-
-
 
 
 
