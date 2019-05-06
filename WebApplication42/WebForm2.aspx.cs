@@ -111,14 +111,14 @@ namespace WebApplication42
                     if(File.Exists(putanja + brojac1 + ".jpg"))
                     {
 
-                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".jpg");
+                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".jpg?ime=Milos");
 
                     }
 
                     else if(File.Exists(putanja + brojac1 + ".png"))
                     {
 
-                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".png");
+                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".png?ime=Milos");
 
 
                     }

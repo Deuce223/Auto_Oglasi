@@ -225,7 +225,11 @@ namespace WebApplication42
                         oglas.Model = user_oglasi.Rows[i]["Model"].ToString();
                         oglas.Oznaka = user_oglasi.Rows[i]["Oznaka"].ToString();
                         oglas.Godiste = user_oglasi.Rows[i]["Godiste"].ToString();
-                        oglas.Slika = user_oglasi.Rows[i]["Slika"].ToString();
+                     //   oglas.Slika = user_oglasi.Rows[i]["Slika"].ToString();
+
+
+
+
                       //  oglas.LinkZaBrisanje = user_oglasi.Rows[i]["Del"].ToString();
                         //   oglas.Vlasnik = user_oglasi.Rows[i]["Vlasnik"].ToString();
 
@@ -241,6 +245,39 @@ namespace WebApplication42
                         //}
 
                         podaci.Add(oglas);
+
+                    }
+
+                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\";
+
+                    foreach(USerOglas C1 in podaci)
+                    {
+                        if(Directory.Exists(putanja + C1.ID + "\\"))
+                        {
+                            if(File.Exists(putanja + C1.ID + "\\" + "0.jpg"))
+                            {
+
+                                C1.Slika = "Slike/" + C1.ID + "/0.jpg?ime=Milos";
+
+                            }
+
+                            else
+                            {
+
+                                C1.Slika = "Slike/" + C1.ID + "/0.png?ime=Milos";
+
+                            }
+
+                        }
+
+                        else
+                        {
+
+                            C1.Slika = "1024px-No_image_available.png";
+
+
+                        }
+                    
 
                     }
 
@@ -278,7 +315,7 @@ namespace WebApplication42
                     oglas.Model = user_oglasi.Rows[i]["Model"].ToString();
                     oglas.Oznaka = user_oglasi.Rows[i]["Oznaka"].ToString();
                     oglas.Godiste = user_oglasi.Rows[i]["Godiste"].ToString();
-                    oglas.Slika = user_oglasi.Rows[i]["Slika"].ToString();
+                 //   oglas.Slika = user_oglasi.Rows[i]["Slika"].ToString();
                   //  oglas.LinkZaBrisanje = user_oglasi.Rows[i]["Del"].ToString();
                     //   oglas.Vlasnik = user_oglasi.Rows[i]["Vlasnik"].ToString();
 
@@ -296,6 +333,41 @@ namespace WebApplication42
                     podaci.Add(oglas);
 
                 }
+
+                string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\";
+
+                foreach (USerOglas C1 in podaci)
+                {
+                    if (Directory.Exists(putanja + C1.ID + "\\"))
+                    {
+                        if (File.Exists(putanja + C1.ID + "\\" + "0.jpg"))
+                        {
+
+                            C1.Slika = "Slike/" + C1.ID + "/0.jpg?ime=Milos";
+
+                        }
+
+                        else
+                        {
+
+                            C1.Slika = "Slike/" + C1.ID + "/0.png?ime=Milos";
+
+                        }
+
+                    }
+
+                    else
+                    {
+
+                        C1.Slika = "1024px-No_image_available.png";
+
+
+                    }
+
+
+                }
+
+
 
                 ins.podaci = podaci;
                 string Dzejson = JsonConvert.SerializeObject(ins);
