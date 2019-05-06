@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Web.Services;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 
 namespace WebApplication42
@@ -42,13 +43,14 @@ namespace WebApplication42
             DataTable podaci = new DataTable();
             DataTable oprema = new DataTable();
             DataTable slike = new DataTable();
+            DataTable telefoni = new DataTable();
 
             adapt.Fill(set);
 
             podaci = set.Tables[0];
             oprema = set.Tables[2];
             slike = set.Tables[1];
-
+            telefoni = set.Tables[3];
 
             OtisakNovi C1 = new OtisakNovi();
             C1.marka = podaci.Rows[0][1].ToString();
@@ -98,6 +100,8 @@ namespace WebApplication42
                 }
 
             }
+
+    
 
 
             //SqlCommand komanda = new SqlCommand("SELECT AUTI.ID, Marka.Naziv, Modeli.Model, Karoserija.Naziv, Gorivo.Naziv, Vrata.Naziv, Lokacija.Naziv, Unos_vreme, Cena, Godiste, Kilometraza, Oznaka, Kubikaza, Menjac.Naziv, Slika, Snaga, Volan.Naziv, Pogon.Naziv, Registrovan_do, Status_CENE.Naziv, ZAMENA.Naziv, BOJA.Naziv, KLIMA.Naziv, Poreklo.Naziv, DODATNA.Naziv, Opis, Vlasnik FROM AUTI INNER JOIN Marka ON Marka.ID = AUTI.Marka INNER JOIN Modeli ON Modeli.ID = Auti.Model INNER JOIN Karoserija ON Karoserija.ID = Auti.Karoserija INNER JOIN Gorivo ON Gorivo.ID = Auti.Gorivo INNER JOIN Vrata ON Vrata.ID = Auti.Vrata INNER JOIN Lokacija ON Lokacija.ID = Auti.Lokacija INNER JOIN Menjac ON Menjac.ID = Auti.Menjac INNER JOIN Status_CENE ON Status_CENE.ID = AUTI.Cena_status INNER JOIN ZAMENA ON ZAMENA.ID = AUTI.Zamena INNER JOIN VOLAN ON VOLAN.ID = AUTI.VOLAN INNER JOIN POGON ON POGON.ID = AUTI.POGON INNER JOIN BOJA ON BOJA.ID = AUTI.Boja LEFT JOIN KLIMA ON KLIMA.ID = Auti.Klima INNER JOIN POREKLO ON POREKLO.ID = AUTI.Poreklo LEFT JOIN DODATNA ON DODATNA.Kola = AUTI.ID LEFT JOIN SLIKE ON SLIKE.AUTOMOBIL = Auti.ID WHERE AUTI.ID = " + ID, conn);
@@ -466,6 +470,7 @@ namespace WebApplication42
                 opisni.InnerHtml = "";
 
                 opisni.InnerHtml += C1.opis;
+           
 
 
             }
@@ -476,7 +481,23 @@ namespace WebApplication42
                 opis.Style.Add("display", "none");
 
             }
-     
+
+
+            for (int brk = 0; brk < telefoni.Rows.Count; brk++)
+            {
+
+                string sadrzaj = "<div class=" + "'phone'" + " id=" + "'brk" + brk + "'" + " runat=" + "'server'" + ">" + telefoni.Rows[brk]["Telefon"].ToString() + "</div>";
+                fonovi.InnerHtml += "<div class=" + "'phone'" + " id=" + "'brk" + brk + "'" + " runat=" + "'server'" + ">" + telefoni.Rows[brk]["Telefon"].ToString() + "</div>";
+                //info.InnerHtml = "mojwe";
+
+
+
+                //HtmlTextWriter pisac = new HtmlTextWriter()
+                //rrrttt.RenderControl()
+
+
+            }
+
 
         }
 

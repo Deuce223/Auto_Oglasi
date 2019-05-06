@@ -402,6 +402,29 @@ background-color:rgba(0,0,0,1);
 
         }
         
+        .phone{
+
+           width:33%;
+           text-align:center;
+
+
+        }
+
+        #ContentPlaceHolder2_fonovi{
+
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin-top:17px;
+
+        }
+
+        #ContentPlaceHolder2_poruka{
+
+            margin:auto;
+
+        }
 
 @media only screen and (max-width:700px){
 
@@ -586,7 +609,12 @@ background-color:rgba(0,0,0,1);
 
                    <h3>Informacije o prodavcu</h3>
 
-
+                 <div id="rrrttt" runat="server">
+                     <p id="paragrafic" runat="server"></p>
+               <%--      <div id="mob1" class="phone" runat="server"></div>
+                       <div id="mob2" class="phone" runat="server"></div>
+                       <div id="mob3" class="phone" runat="server"></div>--%>
+                 </div>
                  <!-- ovde ide modal -->
 
 
@@ -625,6 +653,9 @@ background-color:rgba(0,0,0,1);
 
                <%--  <div id="poruka" onclick="kontakt(this)" runat="server" class="poruke">PORUKA</div>--%>
                     <div id="poruka" onclick="modal(this)" runat="server" class="poruke">PORUKA</div>
+
+
+                 <div id="fonovi" runat="server"></div>
 
             </div>
 
@@ -718,11 +749,6 @@ background-color:rgba(0,0,0,1);
 
         </div>
  
-
-
-
-
-
 
      <script>
 

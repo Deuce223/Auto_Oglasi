@@ -49,6 +49,24 @@ namespace WebApplication42 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl info;
         
         /// <summary>
+        /// rrrttt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rrrttt;
+        
+        /// <summary>
+        /// paragrafic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl paragrafic;
+        
+        /// <summary>
         /// poruka control.
         /// </summary>
         /// <remarks>
@@ -56,6 +74,15 @@ namespace WebApplication42 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl poruka;
+        
+        /// <summary>
+        /// fonovi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fonovi;
         
         /// <summary>
         /// karakteristike control.
