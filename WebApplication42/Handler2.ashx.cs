@@ -229,11 +229,11 @@ namespace WebApplication42
                             string provera = location.Replace("/", "\\");
                             File.Delete(provera);
 
-                            SqlConnection conn = new SqlConnection(Konekcija.CS());
-                            SqlCommand komanda = new SqlCommand("DELETE FROM SLIKE WHERE SLIKA = '" + del_slike[i] + "'", conn);
-                            conn.Open();
-                            komanda.ExecuteNonQuery();
-                            conn.Close();
+                            //SqlConnection conn = new SqlConnection(Konekcija.CS());
+                            //SqlCommand komanda = new SqlCommand("DELETE FROM SLIKE WHERE SLIKA = '" + del_slike[i] + "'", conn);
+                            //conn.Open();
+                            //komanda.ExecuteNonQuery();
+                            //conn.Close();
 
 
                             //onda obrisati iz baze jedan po jedan!

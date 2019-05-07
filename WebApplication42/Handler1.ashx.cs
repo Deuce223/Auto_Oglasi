@@ -134,10 +134,10 @@ namespace WebApplication42
 
                     Directory.CreateDirectory(folderPath + "/" + brojReda);
                     postedFile.SaveAs(folderPath + "/" + brojReda + "/" + izmena1);                    
-                    SqlCommand komanda2 = new SqlCommand("INSERT INTO Slike(Slika,Automobil) VALUES(" + "'" + "Slike/" + brojReda + "/" + izmena1 + "', " + brojReda + ")", conn);
-                    conn.Open();
-                    komanda2.ExecuteNonQuery();
-                    conn.Close();
+                    //SqlCommand komanda2 = new SqlCommand("INSERT INTO Slike(Slika,Automobil) VALUES(" + "'" + "Slike/" + brojReda + "/" + izmena1 + "', " + brojReda + ")", conn);
+                    //conn.Open();
+                    //komanda2.ExecuteNonQuery();
+                    //conn.Close();
 
 
                 }

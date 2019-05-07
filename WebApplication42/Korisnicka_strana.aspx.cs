@@ -248,25 +248,34 @@ namespace WebApplication42
 
                     }
 
-                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\";
+                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "Slike\\";
 
                     foreach(USerOglas C1 in podaci)
                     {
                         if(Directory.Exists(putanja + C1.ID + "\\"))
                         {
-                            if(File.Exists(putanja + C1.ID + "\\" + "0.jpg"))
+
+                            string[] fajlovi = Directory.GetFiles(putanja + C1.ID + "\\");
+                            if (fajlovi.Length == 0)
                             {
 
-                                C1.Slika = "Slike/" + C1.ID + "/0.jpg?ime=Milos";
+                                C1.Slika = "1024px-No_image_available.png";
 
                             }
 
                             else
                             {
 
-                                C1.Slika = "Slike/" + C1.ID + "/0.png?ime=Milos";
+                                int lokacija = fajlovi[0].IndexOf("Slike");
+                                string link = fajlovi[0].Substring(lokacija).Replace('\\', '/') + "?ime=Milos";
+
+                                C1.Slika = link;
+                                string prov = "";
 
                             }
+
+
+
 
                         }
 
@@ -334,25 +343,33 @@ namespace WebApplication42
 
                 }
 
-                string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\";
+                string putanja = AppDomain.CurrentDomain.BaseDirectory + "Slike\\";
 
                 foreach (USerOglas C1 in podaci)
                 {
                     if (Directory.Exists(putanja + C1.ID + "\\"))
                     {
-                        if (File.Exists(putanja + C1.ID + "\\" + "0.jpg"))
+
+                        string[] fajlovi = Directory.GetFiles(putanja + C1.ID + "\\");
+                        if (fajlovi.Length == 0)
                         {
 
-                            C1.Slika = "Slike/" + C1.ID + "/0.jpg?ime=Milos";
+                            C1.Slika = "1024px-No_image_available.png";
 
                         }
 
                         else
                         {
 
-                            C1.Slika = "Slike/" + C1.ID + "/0.png?ime=Milos";
+                            int lokacija = fajlovi[0].IndexOf("Slike");
+                            string link = fajlovi[0].Substring(lokacija).Replace('\\', '/') + "?ime=Milos";
+
+                            C1.Slika = link;
+                            string prov = "";
 
                         }
+
+
 
                     }
 

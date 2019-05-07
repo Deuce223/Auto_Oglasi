@@ -389,38 +389,116 @@ namespace WebApplication42
 
                     conn.Close();
 
-                    foreach(Otisak ff in privremena)
+                    //foreach(Otisak ff in privremena)
+                    //{
+
+                    //    string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ff.ID + "\\";
+                    //    if (Directory.Exists(putanja))
+                    //    {
+
+                    //       if(File.Exists(putanja + "0.jpg"))
+                    //        {
+
+                    //            ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
+
+
+                    //        }
+
+                    //       else if(File.Exists(putanja + "0.png"))
+                    //       {
+
+
+                    //            ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+
+                    //        }
+
+                    //        else
+                    //        {
+
+                    //            ff.slika = "";
+
+                    //        }
+
+
+
+                    //    }
+
+                    //    else
+                    //    {
+
+                    //        ff.slika = "";
+
+                    //    }
+
+                    //}
+
+                    foreach (Otisak ff in privremena)
                     {
 
-                        string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ff.ID + "\\";
+                        string putanja = AppDomain.CurrentDomain.BaseDirectory + "Slike\\" + ff.ID + "\\";
+
                         if (Directory.Exists(putanja))
                         {
-                            
-                           if(File.Exists(putanja + "0.jpg"))
+
+                            string[] fajlovi = Directory.GetFiles(putanja);
+                            if(fajlovi.Length == 0)
                             {
 
-                                ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
-
-
-                            }
-
-                           else if(File.Exists(putanja + "0.png"))
-                           {
-
-
-                                ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+                                ff.slika = "";
 
                             }
 
+                            else
+                            {
 
+                                int lokacija = fajlovi[0].IndexOf("Slike");
+                                string link = fajlovi[0].Substring(lokacija).Replace('\\', '/') + "?ime=Milos";
+
+                                ff.slika = link;
+                                string prov = "";
+
+                            }
+
+                            //for(int counter =0;counter < 10; counter++)
+                            //{
+
+                            //    if (File.Exists(putanja + "0.jpg"))
+                            //    {
+
+                            //        ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
+
+
+                            //    }
+
+                            //    else if (File.Exists(putanja + "0.png"))
+                            //    {
+
+
+                            //        ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+
+                            //    }
+
+
+                            //    else
+                            //    {
+
+                            //        ff.slika = "";
+
+                            //    }
+
+
+
+
+
+                            //}
 
                         }
 
                         else
                         {
 
-                            ff.slika = "";
 
+                            ff.slika = "";
                         }
 
                     }
@@ -492,26 +570,63 @@ namespace WebApplication42
                 foreach (Otisak ff in privremena)
                 {
 
-                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ff.ID + "\\";
+                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "Slike\\" + ff.ID + "\\";
+                    
                     if (Directory.Exists(putanja))
                     {
 
-                        if (File.Exists(putanja + "0.jpg"))
+                        string[] fajlovi = Directory.GetFiles(putanja);
+
+                        if (fajlovi.Length == 0)
                         {
 
-                            ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
-
+                            ff.slika = "";
 
                         }
 
-                        else if (File.Exists(putanja + "0.png"))
+                        else
                         {
 
+                            int lokacija = fajlovi[0].IndexOf("Slike");
+                            string link = fajlovi[0].Substring(lokacija).Replace('\\', '/') + "?ime=Milos";
 
-                            ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+                            ff.slika = link;
+                            string prov = "";
 
                         }
 
+                        //for(int counter =0;counter < 10; counter++)
+                        //{
+
+                        //    if (File.Exists(putanja + "0.jpg"))
+                        //    {
+
+                        //        ff.slika = "Slike/" + ff.ID + "/0.jpg?ime=Milos";
+
+
+                        //    }
+
+                        //    else if (File.Exists(putanja + "0.png"))
+                        //    {
+
+
+                        //        ff.slika = "Slike/" + ff.ID + "/0.png?ime=Milos";
+
+                        //    }
+
+
+                        //    else
+                        //    {
+
+                        //        ff.slika = "";
+
+                        //    }
+
+
+
+
+
+                        //}
 
 
                     }

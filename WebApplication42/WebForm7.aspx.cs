@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.IO;
 
 namespace WebApplication42
 {
@@ -211,7 +212,7 @@ namespace WebApplication42
 
                     DataTable podaci = new DataTable();
                     DataTable oprema = new DataTable();
-                    DataTable slike = new DataTable();
+                    //DataTable slike = new DataTable();
 
                     int duzina = oprema.Rows.Count;
 
@@ -219,7 +220,7 @@ namespace WebApplication42
 
                     podaci = ds.Tables[0];
                     oprema = ds.Tables[1];
-                    slike = ds.Tables[2];
+                    //slike = ds.Tables[2];
 
                     Session["info"] = podaci;
                     Session["gear"] = oprema;
@@ -383,44 +384,200 @@ namespace WebApplication42
 
                     }
 
-                    if(slike.Rows.Count != 0)
+                    DataTable slike = new DataTable();
+                    List<string> slike_niz = new List<string>();
+
+                    string putanja = AppDomain.CurrentDomain.BaseDirectory + "Slike\\" + podaci.Rows[0]["ID"].ToString() + "\\";
+
+                    if (Directory.Exists(putanja))
                     {
-                        for(int j = 0; j < slike.Rows.Count; j++)
+
+                        string[] fajlovi = Directory.GetFiles(putanja);
+                        if(fajlovi.Length != 0)
                         {
-                            int broj1 = j + 1;
-                            string slika = "slika" + broj1;
-                            string br = "l" + broj1;
-                            string r = "i" + broj1;
-                            //glavni.FindControl("slika" + broj1); //ovo izgleda trazi samo serverske kontrole?!
-                            HtmlControl C1 = (HtmlControl)glavni.FindControl(slika);
 
-                            HtmlControl R1 = (HtmlControl)glavni.FindControl(r);
-                            R1.Attributes.Remove("class");
-                            R1.Attributes.Add("class", "slikica");
+                            for(int brojac1 = 0; brojac1 < fajlovi.Length; brojac1++)
+                            {
 
-                            C1.Attributes.Add("src", slike.Rows[j]["Slika"].ToString() + "?id=" + j);  //dodajem neki q string
-                          //  C1.Attributes.Add("alt", slike.Rows[j]["Del_slika"].ToString());
-                            C1.Attributes.Add("name", slike.Rows[j]["ID"].ToString());
-                            HtmlControl D1 = (HtmlControl)glavni.FindControl(br);
-                            D1.Attributes.Add("class", "nevidljiv bazaslika");
-                            D1.Attributes.CssStyle.Add("visibility", "visible");
 
-                            //Type kk = slika1.GetType();
-                            //string prov = kk.ToString();
-                            //string prov1 = kk.ToString();
+                                //slike_niz.Add("Slike/" + podaci.Rows[0]["ID"].ToString() + "/" + fajlovi[brojac1] + ".jpg?ime=Milos");
+
+                                int index = fajlovi[brojac1].IndexOf("Slike");
+                                string link = fajlovi[brojac1].Substring(index).Replace('\\', '/') + "?ime=Milos";
+
+                                int broj1 = brojac1 + 1;
+                                string slika = "slika" + broj1;
+                                string br = "l" + broj1;
+                                string r = "i" + broj1;
+                                //glavni.FindControl("slika" + broj1); //ovo izgleda trazi samo serverske kontrole?!
+                                HtmlControl C1 = (HtmlControl)glavni.FindControl(slika);
+
+                                HtmlControl R1 = (HtmlControl)glavni.FindControl(r);
+                                R1.Attributes.Remove("class");
+                                R1.Attributes.Add("class", "slikica");
+
+                                C1.Attributes.Add("src", link);
+                                // C1.Attributes.Add("src", slike.Rows[j]["Slika"].ToString() + "?id=" + j);  //dodajem neki q string
+
+
+
+                                //  C1.Attributes.Add("alt", slike.Rows[j]["Del_slika"].ToString());
+
+                                //  C1.Attributes.Add("name",  ) name  mi ne treba jer ne brisem iz baze nista !!!!!
+
+                                //   C1.Attributes.Add("name", slike.Rows[j]["ID"].ToString());
+                                HtmlControl D1 = (HtmlControl)glavni.FindControl(br);
+                                D1.Attributes.Add("class", "nevidljiv bazaslika");
+                                D1.Attributes.CssStyle.Add("visibility", "visible");
+
+
+
+                            }
+
+
 
 
 
 
                         }
+
+                                //slike_niz.Add("Slike/" + podaci.Rows[0]["ID"].ToString() + "/" + brojac1 + ".jpg?ime=Milos");
+
+                                //int broj1 = brojac1 + 1;
+                                //string slika = "slika" + broj1;
+                                //string br = "l" + broj1;
+                                //string r = "i" + broj1;
+                                ////glavni.FindControl("slika" + broj1); //ovo izgleda trazi samo serverske kontrole?!
+                                //HtmlControl C1 = (HtmlControl)glavni.FindControl(slika);
+
+                                //HtmlControl R1 = (HtmlControl)glavni.FindControl(r);
+                                //R1.Attributes.Remove("class");
+                                //R1.Attributes.Add("class", "slikica");
+
+                                //C1.Attributes.Add("src", slike_niz[brojac1]);
+                                //// C1.Attributes.Add("src", slike.Rows[j]["Slika"].ToString() + "?id=" + j);  //dodajem neki q string
+
+
+
+                                ////  C1.Attributes.Add("alt", slike.Rows[j]["Del_slika"].ToString());
+
+                                ////  C1.Attributes.Add("name",  ) name  mi ne treba jer ne brisem iz baze nista !!!!!
+
+                                ////   C1.Attributes.Add("name", slike.Rows[j]["ID"].ToString());
+                                //HtmlControl D1 = (HtmlControl)glavni.FindControl(br);
+                                //D1.Attributes.Add("class", "nevidljiv bazaslika");
+                                //D1.Attributes.CssStyle.Add("visibility", "visible");
+
+                                //Type kk = slika1.GetType();
+                                //string prov = kk.ToString();
+                                //string prov1 = kk.ToString();
+
+
+
+
+                   
+
+                            //else if (File.Exists(putanja + brojac1 + ".png"))
+                            //{
+
+                            //    slike_niz.Add("Slike/" + podaci.Rows[0]["ID"].ToString() + "/" + brojac1 + ".png?ime=Milos");
+
+                            //    int broj1 = brojac1 + 1;
+                            //    string slika = "slika" + broj1;
+                            //    string br = "l" + broj1;
+                            //    string r = "i" + broj1;
+                            //    //glavni.FindControl("slika" + broj1); //ovo izgleda trazi samo serverske kontrole?!
+                            //    HtmlControl C1 = (HtmlControl)glavni.FindControl(slika);
+
+                            //    HtmlControl R1 = (HtmlControl)glavni.FindControl(r);
+                            //    R1.Attributes.Remove("class");
+                            //    R1.Attributes.Add("class", "slikica");
+
+                            //    C1.Attributes.Add("src", slike_niz[brojac1]);
+                            //    // C1.Attributes.Add("src", slike.Rows[j]["Slika"].ToString() + "?id=" + j);  //dodajem neki q string
+
+
+
+                            //    //  C1.Attributes.Add("alt", slike.Rows[j]["Del_slika"].ToString());
+
+                            //    //  C1.Attributes.Add("name",  ) name  mi ne treba jer ne brisem iz baze nista !!!!!
+
+                            //    //   C1.Attributes.Add("name", slike.Rows[j]["ID"].ToString());
+                            //    HtmlControl D1 = (HtmlControl)glavni.FindControl(br);
+                            //    D1.Attributes.Add("class", "nevidljiv bazaslika");
+                            //    D1.Attributes.CssStyle.Add("visibility", "visible");
+
+                            //    //Type kk = slika1.GetType();
+                            //    //string prov = kk.ToString();
+                            //    //string prov1 = kk.ToString();
+
+
+
+                            //}
+
+                            //else
+                            //{
+
+                            //    break;
+
+                            //}
+
+
                       
+
 
 
 
 
                     }
 
- 
+
+
+                    //if (slike.Rows.Count != 0)
+                    //{
+                    //    for (int j = 0; j < slike.Rows.Count; j++)
+                    //    {
+                    //        int broj1 = j + 1;
+                    //        string slika = "slika" + broj1;
+                    //        string br = "l" + broj1;
+                    //        string r = "i" + broj1;
+                    //        //glavni.FindControl("slika" + broj1); //ovo izgleda trazi samo serverske kontrole?!
+                    //        HtmlControl C1 = (HtmlControl)glavni.FindControl(slika);
+
+                    //        HtmlControl R1 = (HtmlControl)glavni.FindControl(r);
+                    //        R1.Attributes.Remove("class");
+                    //        R1.Attributes.Add("class", "slikica");
+
+                    //        C1.Attributes.Add("src", slike_niz[j]);
+                    //       // C1.Attributes.Add("src", slike.Rows[j]["Slika"].ToString() + "?id=" + j);  //dodajem neki q string
+                              
+                            
+                            
+                    //        //  C1.Attributes.Add("alt", slike.Rows[j]["Del_slika"].ToString());
+
+                    //      //  C1.Attributes.Add("name",  ) name  mi ne treba jer ne brisem iz baze nista !!!!!
+
+                    //     //   C1.Attributes.Add("name", slike.Rows[j]["ID"].ToString());
+                    //        HtmlControl D1 = (HtmlControl)glavni.FindControl(br);
+                    //        D1.Attributes.Add("class", "nevidljiv bazaslika");
+                    //        D1.Attributes.CssStyle.Add("visibility", "visible");
+
+                    //        //Type kk = slika1.GetType();
+                    //        //string prov = kk.ToString();
+                    //        //string prov1 = kk.ToString();
+
+
+
+
+                    //    }
+
+
+
+
+
+                    //}
+
+
                 }
 
             }

@@ -101,37 +101,46 @@ namespace WebApplication42
 
             //}
 
-            string putanja = AppDomain.CurrentDomain.BaseDirectory + "\\Slike\\" + ID + "\\";
+            string putanja = AppDomain.CurrentDomain.BaseDirectory + "Slike\\" + ID + "\\";
 
             if (Directory.Exists(putanja))
             {
-                for(int brojac1 = 0; brojac1 < 10; brojac1++)
-                {
+                  
+                     string[] fajlovi = Directory.GetFiles(putanja);
 
-                    if(File.Exists(putanja + brojac1 + ".jpg"))
-                    {
+                        if (fajlovi.Length == 0)
+                        {
 
-                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".jpg?ime=Milos");
+                           //pictures.Add("1024px-No_image_available.png");
 
-                    }
+                        }
 
-                    else if(File.Exists(putanja + brojac1 + ".png"))
-                    {
+                        else
+                        {
+                               for(int cc = 0; cc < fajlovi.Length; cc++)
 
-                        pictures.Add("Slike/" + ID + "/" + brojac1 + ".png?ime=Milos");
+                               {
 
+                                 int lokacija = fajlovi[cc].IndexOf("Slike");
+                                 string link = fajlovi[cc].Substring(lokacija).Replace('\\', '/');
 
-                    }
-
-                    else
-                    {
-
-                        break;
-
-                    }
+                                 pictures.Add(link);
+                                 string prov = "";
 
 
-                }
+
+                               }
+                             
+               
+
+                        }
+
+            }
+
+            else
+            {
+
+                //pictures.Add("1024px-No_image_available.png");
 
             }
     
