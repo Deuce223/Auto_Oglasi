@@ -95,12 +95,12 @@ namespace WebApplication42
 
             string[] neki = podaci;
             SqlConnection conn = new SqlConnection(Konekcija.CS());
-            SqlCommand komanda = new SqlCommand("INSERT INTO KORISNICI(USERNAME,MEJL,LOZINKA,IME,PREZIME,OVLASCENJE,STANJE,TOKEN) OUTPUT INSERTED.ID VALUES(" + "'" + neki[0] + "', '" + neki[2] + "', '" + neki[1] + "', '" + neki[3] + "', '" + neki[4] + "', " + 2 + ", " + 2 + ", '" + token + "')", conn);
+            SqlCommand komanda = new SqlCommand("INSERT INTO KORISNICI(USERNAME,MEJL,LOZINKA,IME,PREZIME,OVLASCENJE,TOKEN) OUTPUT INSERTED.ID VALUES(" + "'" + neki[0] + "', '" + neki[2] + "', '" + neki[1] + "', '" + neki[3] + "', '" + neki[4] + "', " + 3 + ", '" + token + "')", conn);
             conn.Open();
             int redni = (int)komanda.ExecuteScalar();
             SqlCommand komanda1 = new SqlCommand("INSERT INTO TELEFONI(TELEFON,KORISNIK) VALUES(" + "'" + neki[5] + "', " + redni + ")", conn);
 
-         
+            //napravi datatable od podataka i datatable od telefona i posalji u sql!!!!!
 
             //napisati store proceduru za ovaj insert!!!!!!!!
 

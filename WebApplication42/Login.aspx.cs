@@ -74,7 +74,7 @@ namespace WebApplication42
                     HttpContext.Current.Session["IME"] = info.Rows[0]["IME"].ToString();
                     HttpContext.Current.Session["PREZIME"] = info.Rows[0]["PREZIME"].ToString();
                     HttpContext.Current.Session["OVLASCENJE"] = info.Rows[0]["OVLASCENJE"].ToString();
-                    HttpContext.Current.Session["STANJE"] = info.Rows[0]["STANJE"].ToString();
+                  //  HttpContext.Current.Session["STANJE"] = info.Rows[0]["STANJE"].ToString(); stanje mi ne treba ubuduce!
 
                     if (stranaBackTrack == "postavljanje")
                     {

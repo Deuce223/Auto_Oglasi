@@ -25,7 +25,7 @@ namespace WebApplication42
             //DataTable korisnik = new DataTable();
             //adapt.Fill(korisnik);
 
-            SqlCommand komanda = new SqlCommand("UPDATE KORISNICI SET STANJE = 1 WHERE TOKEN = '" + token + "'", conn);
+            SqlCommand komanda = new SqlCommand("UPDATE KORISNICI SET OVLASCENJE = 2 WHERE TOKEN = '" + token + "'", conn);
             conn.Open();
             int broj = komanda.ExecuteNonQuery();
             conn.Close();

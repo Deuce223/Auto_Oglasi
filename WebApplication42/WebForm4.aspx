@@ -128,6 +128,12 @@
 
         }
 
+        #moj{
+
+
+            color:red;
+        }
+
      </style>
 
     <script src="jquery-3.3.1.min.js"></script>
@@ -176,8 +182,8 @@
         var ime = false;
         var prezime = false;
         var mobilni1 = false;
-        var mobilni2 = false;
-        var fiksni = false;
+        var mobilni2 = true;
+        var fiksni = true;
 
 
         function provera(element) {
@@ -260,7 +266,7 @@
 
             else {
 
-                element.style.backgroundColor = "red";
+              //  element.style.backgroundColor = "red";
                 document.getElementById("moj").innerHTML = rez;
 
                 if (element.getAttribute("name") == "korisnik") {
@@ -327,7 +333,7 @@
                 if (element.value.length < 3) {
 
 
-                    element.style.backgroundColor = "red";
+                   // element.style.backgroundColor = "red";
                     korisnik = false;
                     document.getElementById("moj").innerHTML = "USERNAME mora biti duzi od 2 karaktera";
 
@@ -350,7 +356,7 @@
                 if (!reg.test(element.value)) {
 
 
-                    element.style.backgroundColor = "red";
+                 //   element.style.backgroundColor = "red";
                     email = false;
                     document.getElementById("moj").innerHTML = "UNESiTE Email u pravilnom formatu";
 
@@ -385,7 +391,7 @@
                 else {
 
                     document.getElementById("moj").innerHTML = "Lozinka mora sadrzati bar jedan broj i jedno malo i veliko slovo, minimalne duzine 7 karaktera";
-                    element.style.backgroundColor = "red";
+                  //  element.style.backgroundColor = "red";
                     lozinka = false;
 
                 }
@@ -402,7 +408,7 @@
 
 
                     document.getElementById("moj").innerHTML = "ime i prezime moraju biti duzi od 2 karaktera!";
-                    element.style.backgroundColor = "red";
+                   // element.style.backgroundColor = "red";
 
                     if (element.getAttribute("name") == "ime") {
 
@@ -459,8 +465,9 @@
                 else {
 
 
-                    element.style.backgroundColor = "red";
+                  //  element.style.backgroundColor = "red";
                     lozinka_opet = false;
+                    document.getElementById("moj").innerHTML = "ponovljena lozinka nije ispravna"
 
 
                 }
@@ -495,16 +502,18 @@
                 else {
 
 
-                    element.style.backgroundColor = "red";
+                 //   element.style.backgroundColor = "red";
                        if (element.getAttribute("name") == "mob1") {
 
-                        mobilni1 = false;
+                           mobilni1 = false;
+                           document.getElementById("moj").innerHTML = "mobilni mora biti u formatu 06xxxxxxx ili 06xxxxxxx";
 
                     }
 
                     else {
 
-                        mobilni2 = false;
+                           mobilni2 = false;
+                           document.getElementById("moj").innerHTML = "mobilni mora biti u formatu 06xxxxxxx ili 06xxxxxxx";
 
                     }
 
@@ -527,8 +536,10 @@
 
                     else {
 
-                         element.style.backgroundColor = "red";
-                        fiksni = false;
+                    //
+                 //   element.style.backgroundColor = "red";
+                    fiksni = false;
+                    document.getElementById("moj").innerHTML = "fiksni telefon mora biti u formatu 0xxxxxxxxx"
 
                     }
                 
@@ -545,7 +556,7 @@
                $("body").css("cursor", "progress");
 
 
-                if (korisnik && lozinka && lozinka_opet && email && ime && prezime && mobilni1) {
+                if (korisnik && lozinka && lozinka_opet && email && ime && prezime && mobilni1 && mobilni2 && fiksni) {
 
 
                     //var kor = document.getElementsByTagName("input").length;
@@ -554,7 +565,7 @@
 
                     var nizPodataka = [];
 
-                    for (i = 0; i < kor1; i++)
+                    for (i = 0; i < 7; i++)
                     {
 
                         if (i == 2)
@@ -575,7 +586,28 @@
 
                     }
 
+                    //alert(document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[7].value);
+                    //alert(document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[8].value);
+
+                    if (mobilni2 && document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[7].value != "" ) {
+
+
+                        nizPodataka.push(document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[7].value);
+
+                    }
+
+
+                    if (fiksni && document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[8].value != "") {
+
+
+                        nizPodataka.push(document.getElementsByClassName("glavni")[0].getElementsByTagName("input")[8].value);
+
+                    }
+
                     // var obkDzejson = JSON.stringify({ korisnik: korisnik, lozinka: lozinka, email:email ime: ime, prezime: prezime, mobilni1: mobilni1 });
+
+
+
                     objekatSlanje = { podaci: nizPodataka };
 
                     $.ajax({
@@ -603,55 +635,63 @@
 
                 else {
 
-                    korisnik && lozinka && lozinka_opet && email && ime && prezime && mobilni1
-                    if (korisnik == false)
+                    //korisnik && lozinka && lozinka_opet && email && ime && prezime && mobilni1
+                    if (!korisnik || !lozinka || !lozinka_opet || !email || !ime && !prezime || !mobilni1)
                     {
 
-                         document.getElementsByName("korisnik")[0].style.backgroundColor = "red";
+                        document.getElementById("moj").innerHTML = "unesite sva obavezna polja!";
 
                     }
+
+
+                    //if (korisnik == false)
+                    //{
+
+                    //     document.getElementsByName("korisnik")[0].style.backgroundColor = "red";
+
+                    //}
                 
-                    if (lozinka == false)
-                    {
+                    //if (lozinka == false)
+                    //{
                        
-                         document.getElementsByName("lozinka")[0].style.backgroundColor = "red";
+                    //     document.getElementsByName("lozinka")[0].style.backgroundColor = "red";
 
-                    }
+                    //}
 
-                    if (lozinka_opet == false)
-                    {
+                    //if (lozinka_opet == false)
+                    //{
 
-                         document.getElementsByName("druga_lozinka")[0].style.backgroundColor = "red";
+                    //     document.getElementsByName("druga_lozinka")[0].style.backgroundColor = "red";
 
-                    }
+                    //}
 
-                    if (email == false)
-                    {
+                    //if (email == false)
+                    //{
 
-                          document.getElementsByName("email")[0].style.backgroundColor = "red";
+                    //      document.getElementsByName("email")[0].style.backgroundColor = "red";
 
-                    }
+                    //}
 
-                    if (ime == false)
-                    {
+                    //if (ime == false)
+                    //{
 
-                         document.getElementsByName("ime")[0].style.backgroundColor = "red";
+                    //     document.getElementsByName("ime")[0].style.backgroundColor = "red";
 
-                    }
+                    //}
 
-                    if (prezime == false)
-                    {
+                    //if (prezime == false)
+                    //{
 
-                         document.getElementsByName("prezime")[0].style.backgroundColor = "red";
+                    //     document.getElementsByName("prezime")[0].style.backgroundColor = "red";
 
-                    }
+                    //}
 
-                    if (mobilni1 == false)
-                    {
+                    //if (mobilni1 == false)
+                    //{
 
-                         document.getElementsByName("mob1")[0].style.backgroundColor = "red";
+                    //     document.getElementsByName("mob1")[0].style.backgroundColor = "red";
 
-                    }
+                    //}
 
                 }
             })

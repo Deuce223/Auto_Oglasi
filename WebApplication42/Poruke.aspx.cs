@@ -19,7 +19,7 @@ namespace WebApplication42
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["STANJE"].ToString() == "2" || Session["STANJE"].ToString() == "")
+            if (Session["OVLASCENJE"].ToString() == "3" || Session["OVLASCENJE"].ToString() == "")
             {
 
                 string vlasnik = Request.QueryString["vlasnik"];

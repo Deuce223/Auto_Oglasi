@@ -22,7 +22,7 @@ namespace WebApplication42
 
             //samo ako je ulogovan i sa pravim statusom, isto i za login setovati 
 
-            if (/*Session["USERNAME"].ToString() == "" && */Session["STANJE"].ToString() == "2" || Session["STANJE"].ToString() == "")
+            if (/*Session["USERNAME"].ToString() == "" && */Session["OVLASCENJE"].ToString() == "3" || Session["OVLASCENJE"].ToString() == "")
             {
 
 

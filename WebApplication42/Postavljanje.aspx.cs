@@ -18,7 +18,7 @@ namespace WebApplication42
 
         protected void Page_Load(object sender, EventArgs e)
         {
-             if(/*Session["USERNAME"].ToString() == "" && */Session["STANJE"].ToString() == "2" || Session["STANJE"].ToString() == "")
+             if(/*Session["USERNAME"].ToString() == "" && */Session["OVLASCENJE"].ToString() == "3" || Session["OVLASCENJE"].ToString() == "")
             {
 
                 
