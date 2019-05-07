@@ -386,11 +386,11 @@ namespace WebApplication42
                             //continue;
                             fajl.SaveAs(folderPath + novo_ime);
 
-                            SqlConnection conn = new SqlConnection(Konekcija.CS());
-                            SqlCommand komanda2 = new SqlCommand("INSERT INTO Slike(Slika,Automobil) VALUES(" + "'" + "Slike/" + idVozila + "/" + novo_ime + "', " + idVozila + ")", conn);
-                            conn.Open();
-                            komanda2.ExecuteNonQuery();
-                            conn.Close();
+                            //SqlConnection conn = new SqlConnection(Konekcija.CS());
+                            //SqlCommand komanda2 = new SqlCommand("INSERT INTO Slike(Slika,Automobil) VALUES(" + "'" + "Slike/" + idVozila + "/" + novo_ime + "', " + idVozila + ")", conn);
+                            //conn.Open();
+                            //komanda2.ExecuteNonQuery();
+                            //conn.Close();
 
                             break;
 
