@@ -132,6 +132,9 @@
 
 
             color:red;
+            display:flex;
+            justify-content:center;
+            align-items:center;
         }
 
      </style>
@@ -164,7 +167,7 @@
 
            <input type="button" id="dugme" onclick="return false" value="REGISTRUJ SE"/>
 
-             <div id="moj" style="margin-top:15px;height:15px;"></div>
+             <div id="moj" style="margin-top:15px;height:35px;"></div>
 
         </div>
     </form>
@@ -358,7 +361,7 @@
 
                  //   element.style.backgroundColor = "red";
                     email = false;
-                    document.getElementById("moj").innerHTML = "UNESiTE Email u pravilnom formatu";
+                    document.getElementById("moj").innerHTML = "Unesite Email u pravilnom formatu";
 
 
                 }
@@ -390,7 +393,7 @@
 
                 else {
 
-                    document.getElementById("moj").innerHTML = "Lozinka mora sadrzati bar jedan broj i jedno malo i veliko slovo, minimalne duzine 7 karaktera";
+                    document.getElementById("moj").innerHTML = "Lozinka minimum 7 karaktera, 1 broj, 1 malo, 1 veliko slovo";
                   //  element.style.backgroundColor = "red";
                     lozinka = false;
 
@@ -640,6 +643,7 @@
                     {
 
                         document.getElementById("moj").innerHTML = "unesite sva obavezna polja!";
+                         $("body").css("cursor", "default");
 
                     }
 

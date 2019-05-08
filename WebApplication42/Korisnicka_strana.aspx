@@ -3,11 +3,7 @@
 
     <style>
 
-        html, body {
-            margin: 0;
-            height: 100%;
-
-                   }
+     
 
         .glavni{
 
@@ -499,6 +495,14 @@
 
                     document.getElementById("poruke").classList.remove("switch");
 
+                   }
+
+
+                else if (document.getElementById("ContentPlaceHolder4_info").classList.contains("switch")) {
+
+
+                    document.getElementById("ContentPlaceHolder4_info").classList.remove("switch");
+
                 }
 
 
@@ -582,6 +586,13 @@
 
                 }
 
+                 else if (document.getElementById("ContentPlaceHolder4_info").classList.contains("switch")) {
+
+
+                    document.getElementById("ContentPlaceHolder4_info").classList.remove("switch");
+
+                }
+
 
                 $("#poruke").addClass("switch");
 
@@ -661,6 +672,28 @@
               document.getElementById("ContentPlaceHolder4_info").addEventListener("click", function () {
 
                 //mora jos neki ajax koji daje broj rezultata!!
+
+                  
+                   if (document.getElementById("poruke").classList.contains("switch")) {
+
+
+                    document.getElementById("poruke").classList.remove("switch");
+
+                   }
+
+                  else if (document.getElementById("oglas").classList.contains("switch")) {
+
+
+                    document.getElementById("oglas").classList.remove("switch");
+
+                  }
+
+                  
+
+
+                $("#ContentPlaceHolder4_info").addClass("switch");
+
+
 
                 document.getElementById("content").innerHTML = "";
                 //document.getElementById("gornji").innerHTML = "";
