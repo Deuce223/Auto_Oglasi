@@ -458,6 +458,9 @@
 
         $(document).ready(function () {
 
+            //sakri();
+            //document.getElementById("content").innerHTML = "";
+
             $("#oglas").click(function () {
 
                 //$("html").css("cursor", "wait");
@@ -494,7 +497,7 @@
 
                         trenutnaStr = 0;
 
-                        history.pushState(istorija, "", "");
+                        history.pushState(istorija, "", "Korisnicka_strana.aspx?history=da");
 
 
                         //alert("poziv");
@@ -579,7 +582,7 @@
                 //pocetno stanje!!
                 var ob1 = { BrojStrana: -1 };
                 var ob2 = { sadrzaj: ob1 };
-                history.replaceState(ob2, "", "");
+                history.replaceState(ob2, "", "Korisnicka_strana.aspx?history=da");
 
 
             }
@@ -1282,7 +1285,7 @@
                          //   trenutnaStr = parseInt(this.innerHTML) - 1;
                           //  alert(trenutnaStr);
                             istorija = { sadrzaj: obkt, trenutnaStrana: redni };
-                            history.pushState(istorija, "", "");
+                            history.pushState(istorija, "", "Korisnicka_strana.aspx?history=da");
                             sadrzaj(result.d);
 
                             //  paging(result.d); za sad ne ovako!

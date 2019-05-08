@@ -942,12 +942,12 @@ margin-top:5px;
                        var primljeni = { brojPogodaka: "pocetni" };
                        var novi = { dobijen: primljeni };
                          //var grupniObjekat = { dobijen: primljeni, poslat: objekatPocetni };
-                       history.replaceState(novi, "", "")
+                       history.replaceState(novi, "", "WebForm1.aspx?history=da")
                        
 
                 }
 
-                else
+                else // if kveri string nije jednako pretraga
                 {
 
                   //  konstantno ulazi ovde;
@@ -960,6 +960,8 @@ margin-top:5px;
                        paging_osvezavanje(history.state.dobijen);
 
                 }
+
+                //else nista
 
                 //if (history.state.poslat !== objekatPocetni)
                 //{
@@ -1530,7 +1532,7 @@ margin-top:5px;
 
                         var grupniObjekat = { dobijen: primljeni, poslat: objekatPocetni };
 
-                        history.pushState(grupniObjekat, "", "");
+                        history.pushState(grupniObjekat, "", "WebForm1.aspx?nov=novo");
 
 
                     },
