@@ -377,6 +377,35 @@
 
         }
 
+        .obrisi{
+
+            width:70px;
+            height:40px;
+            background-color:firebrick;
+            color:white;
+            cursor:pointer;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin:auto;
+
+
+        }
+
+        .obavestenje{
+
+          
+            height:60px;
+            background-color:white;
+            color:black;
+            width:50%;
+            margin:auto;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+        }
+
     </style>
     <script src="jquery-3.3.1.min.js"></script>
 </asp:Content>
@@ -388,7 +417,7 @@
 
         <div class="dugme" id="oglas">Oglasi</div>
         <div class="dugme" id="poruke">Poruke</div>
-        <div class="dugme" id="info">Info</div>
+        <div class="dugme" id="info" runat="server">Admin</div>
 
     </div>
 
@@ -443,21 +472,21 @@
                     data: JSON.stringify(objekat),
                     success: function (result) {
 
-                        
-                      //  $(".sadrzaj").first().text(result.d);
+
+                        //  $(".sadrzaj").first().text(result.d);
                         //$("html").css("cursor", "default");
                         //$(".dugme").css("cursor", "cursor");
                         //alert("radi");
                         //alert(result.d);
 
-                      var obkt = JSON.parse(result.d);
+                        var obkt = JSON.parse(result.d);
                         //var obkt = { broj: 1 };
                         brStr = obkt.BrojStrana;
-                 //       alert(obkt.BrojStrana);
+                        //       alert(obkt.BrojStrana);
 
                         var istorija = { sadrzaj: obkt, trenutnaStrana: 0 };
 
-               //         alert(istorija.sadrzaj.podaci[0].ID);
+                        //         alert(istorija.sadrzaj.podaci[0].ID);
 
                         //alert(istorija.trenutnaStrana);
                         //alert(istorija.sadrzaj);
@@ -471,9 +500,9 @@
                         //alert("poziv");
                         sadrzaj(result.d);
 
-                        
 
-                      //  paging(result.d); za sad ne ovako!
+
+                        //  paging(result.d); za sad ne ovako!
 
 
                     },
@@ -555,8 +584,7 @@
 
             }
 
-            else
-            {
+            else {
 
                 sadrzajHistory(history.state);
                 brStr = history.state.sadrzaj.BrojStrana;
@@ -566,100 +594,194 @@
 
             }
 
+
+
+
+        
+
+
+      
+
         })
 
-        function sadrzaj(rezultat) {
+              document.getElementById("ContentPlaceHolder4_info").addEventListener("click", function () {
 
-            document.getElementById("content").innerHTML = "";
-            //document.getElementById("unutrasnji").innerHTML = "";
-            //document.getElementById("unutrasnji1").innerHTML = "";
-            var objekat1 = JSON.parse(rezultat);
-
-
-            if (objekat1.BrojStrana == -1)
-            {
+                //mora jos neki ajax koji daje broj rezultata!!
 
                 document.getElementById("content").innerHTML = "";
-                sakri();
-                //alert('radi ovaj sa -1');
+                //document.getElementById("gornji").innerHTML = "";
+                  //document.getElementById("donji").innerHTML = "";
+                  sakri();
+
+                var div = document.createElement("div");
+                div.classList.add("obrisi");
+             
+                  div.addEventListener("click", obrisiSve);
+
+                var text = document.createTextNode("OBRISI");
+                div.appendChild(text);
+                  document.getElementById("content").appendChild(div);
+
+               
+                  kolicina();
 
 
-                //pagging treba da bude nevidljiv
+
+        })
+
+        function kolicina() {
+
+               $.ajax({
+                   url: "Admin.aspx/brojIsteklih",
+                   method: "POST",
+                   contentType: "application/json; charset=utf-8",
+                   success: function (result) {
+
+                     //  alert("obrisano i radi");
+                       alert(result.d);
+
+
+                       var por = document.createElement("div");
+                       var text = document.createTextNode("UKUPNO " + result.d + " ISTEKLIH OGLASA");
+                       por.classList.add("obavestenje");
+                       por.appendChild(text);
+                       document.getElementById("content").appendChild(por);
+
+
+
+
+                   },
+                   error: function (result) {
+
+                        alert("ne radi");
+
+                   }
+
+
+
+
+                  })
+
+
+        }
+
+
+
+           function obrisiSve() {
+
+                alert("usao");
+
+                $.ajax({
+                    url: "Admin.aspx/ObrisiSve",
+                    method: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+
+                     //   alert("obrisano i radi");
+
+                    },
+                    error: function (result) {
+
+                        alert("ne radi");
+
+                    }
+
+
+
+                })
 
             }
-            else
-            {
-                var objekat = JSON.parse(rezultat);
-                //alert(rezultat);
-
-                //treba da bude vidljiv i da se izlista broj stranica!!!!!
-
-                for (i = 0; i < objekat.podaci.length; i++)
-                {
 
 
-                    var mainDiv = document.createElement("div");
-                    mainDiv.classList.add("delovi_convo1");
+            function sadrzaj(rezultat) {
 
-                    var glavniDiv = document.createElement("div"); //glavni div   
-                    glavniDiv.classList.add("stavke");
-
-
-                    mainDiv.setAttribute("id", objekat.podaci[i].ID);
-                    mainDiv.addEventListener("click", auto);
-                    //    glavniDiv.setAttribute("id", i + "glavni");
-
-                    var slikaDiv = document.createElement("div"); //div za sliku;
-                    slikaDiv.classList.add("slika");
-
-                    var slika = document.createElement("img");
-                    slika.setAttribute("src", objekat.podaci[i].Slika);
-                 //   slika.setAttribute("alt", objekat.podaci[i].LinkZaBrisanje);
-
-                    slikaDiv.appendChild(slika);
-                    glavniDiv.appendChild(slikaDiv);
+                document.getElementById("content").innerHTML = "";
+                //document.getElementById("gornji").innerHTML = "";
+                //document.getElementById("donji").innerHTML = "";
+                //document.getElementById("unutrasnji").innerHTML = "";
+                //document.getElementById("unutrasnji1").innerHTML = "";
+                var objekat1 = JSON.parse(rezultat);
 
 
-                    var informacije = document.createElement("div");
-                    informacije.classList.add("sredina");
-                    var text = document.createTextNode(objekat.podaci[i].Marka + " " + objekat.podaci[i].Model + " " + objekat.podaci[i].Oznaka + " " + objekat.podaci[i].Godiste)
-                    informacije.appendChild(text);
+                if (objekat1.BrojStrana == -1) {
 
-                    glavniDiv.appendChild(informacije);
-
-                    var izmeniDugme = document.createElement("div");
-                    izmeniDugme.classList.add("button");
-                    izmeniDugme.addEventListener("click", izmena);
-                    var textIzmena = document.createTextNode("IZMENI");
-
-                    izmeniDugme.appendChild(textIzmena);
-
-                    var obrisiDugme = document.createElement("div");
-                    obrisiDugme.setAttribute("id", objekat.podaci[i].ID);
-                    obrisiDugme.classList.add("button");
-                    var textBrisanje = document.createTextNode("OBRISI");
-
-                    obrisiDugme.appendChild(textBrisanje);
-
-                    obrisiDugme.addEventListener("click", obrisi);
+                    document.getElementById("content").innerHTML = "";
+                    sakri();
+                    //alert('radi ovaj sa -1');
 
 
-                    glavniDiv.appendChild(izmeniDugme);
-                    glavniDiv.appendChild(obrisiDugme);
-                    mainDiv.appendChild(glavniDiv);
-
-
-                    document.getElementById("content").appendChild(mainDiv);
+                    //pagging treba da bude nevidljiv
 
                 }
-                    if (objekat.BrojStrana > 1)
-                    {
-                           document.getElementById("unutrasnji").innerHTML = "";
-                          document.getElementById("unutrasnji1").innerHTML = "";
+                else {
+                    var objekat = JSON.parse(rezultat);
+                    //alert(rezultat);
+
+                    //treba da bude vidljiv i da se izlista broj stranica!!!!!
+
+                    for (i = 0; i < objekat.podaci.length; i++) {
+
+
+                        var mainDiv = document.createElement("div");
+                        mainDiv.classList.add("delovi_convo1");
+
+                        var glavniDiv = document.createElement("div"); //glavni div   
+                        glavniDiv.classList.add("stavke");
+
+
+                        mainDiv.setAttribute("id", objekat.podaci[i].ID);
+                        mainDiv.addEventListener("click", auto);
+                        //    glavniDiv.setAttribute("id", i + "glavni");
+
+                        var slikaDiv = document.createElement("div"); //div za sliku;
+                        slikaDiv.classList.add("slika");
+
+                        var slika = document.createElement("img");
+                        slika.setAttribute("src", objekat.podaci[i].Slika);
+                        //   slika.setAttribute("alt", objekat.podaci[i].LinkZaBrisanje);
+
+                        slikaDiv.appendChild(slika);
+                        glavniDiv.appendChild(slikaDiv);
+
+
+                        var informacije = document.createElement("div");
+                        informacije.classList.add("sredina");
+                        var text = document.createTextNode(objekat.podaci[i].Marka + " " + objekat.podaci[i].Model + " " + objekat.podaci[i].Oznaka + " " + objekat.podaci[i].Godiste)
+                        informacije.appendChild(text);
+
+                        glavniDiv.appendChild(informacije);
+
+                        var izmeniDugme = document.createElement("div");
+                        izmeniDugme.classList.add("button");
+                        izmeniDugme.addEventListener("click", izmena);
+                        var textIzmena = document.createTextNode("IZMENI");
+
+                        izmeniDugme.appendChild(textIzmena);
+
+                        var obrisiDugme = document.createElement("div");
+                        obrisiDugme.setAttribute("id", objekat.podaci[i].ID);
+                        obrisiDugme.classList.add("button");
+                        var textBrisanje = document.createTextNode("OBRISI");
+
+                        obrisiDugme.appendChild(textBrisanje);
+
+                        obrisiDugme.addEventListener("click", obrisi);
+
+
+                        glavniDiv.appendChild(izmeniDugme);
+                        glavniDiv.appendChild(obrisiDugme);
+                        mainDiv.appendChild(glavniDiv);
+
+
+                        document.getElementById("content").appendChild(mainDiv);
+
+                    }
+                    if (objekat.BrojStrana > 1) {
+                        document.getElementById("unutrasnji").innerHTML = "";
+                        document.getElementById("unutrasnji1").innerHTML = "";
 
                         otkri();
-                        for (i = 0; i < objekat.BrojStrana; i++)
-                        {
+                        for (i = 0; i < objekat.BrojStrana; i++) {
 
                             var stranicaDiv = document.createElement("div");
                             var stranicaDiv1 = document.createElement("div");
@@ -668,20 +790,19 @@
                             stranicaDiv.addEventListener("click", page);
                             stranicaDiv1.addEventListener("click", posredniKlik);
 
-                            if (i == 0)
-                            {
+                            if (i == 0) {
 
                                 stranicaDiv.classList.add("plava");
                                 stranicaDiv1.classList.add("plava");
 
                             }
-                        
+
                             var textstranica = document.createTextNode(i + 1);
                             var textstranica1 = document.createTextNode(i + 1);
-                            
+
                             stranicaDiv.appendChild(textstranica);
                             stranicaDiv1.appendChild(textstranica1);
-                        //ovde dodati event na dugme
+                            //ovde dodati event na dugme
 
 
                             document.getElementById("unutrasnji").appendChild(stranicaDiv);
@@ -698,11 +819,13 @@
                 }
 
             }
-
+        
 
         function sadrzaj_poruke(rezultat) {
 
-             document.getElementById("content").innerHTML = "";
+            document.getElementById("content").innerHTML = "";
+
+            sakri();
 
             for (i = 0; i < rezultat.podaci.length; i++) {
 

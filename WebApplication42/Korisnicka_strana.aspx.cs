@@ -22,6 +22,8 @@ namespace WebApplication42
 
             //samo ako je ulogovan i sa pravim statusom, isto i za login setovati 
 
+            Response.Cache.SetNoStore();
+
             if (/*Session["USERNAME"].ToString() == "" && */Session["OVLASCENJE"].ToString() == "3" || Session["OVLASCENJE"].ToString() == "")
             {
 
@@ -36,6 +38,16 @@ namespace WebApplication42
 
                 korisnik = Session["ID"].ToString();
                 username = Session["USERNAME"].ToString();
+
+                if(Session["OVLASCENJE"].ToString() == "2")
+                {
+
+                    info.Attributes.CssStyle.Add("display", "none");
+
+
+                }
+                //sakriti oglase!!!!!
+
             }
 
             
