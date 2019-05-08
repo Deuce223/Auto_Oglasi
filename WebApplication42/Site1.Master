@@ -69,13 +69,16 @@
        #footer{
 
 
-           width:700px;
-           height:200px;
+           width:1200px;
+           height:130px;
            display:flex;
            justify-content:center;
            align-items:flex-end;
-           background-color:black;
+           background-color:antiquewhite;
            margin:auto;
+           color:black;
+           /*position:absolute;
+           bottom:0px;*/
 
 
        }
@@ -220,7 +223,7 @@
     <div id="razmak"></div>
     <div id="footer">
 
-       <p style="color:white;">&copy; 2019</p> 
+       <p>&copy; 2019</p> 
 
     </div>
 

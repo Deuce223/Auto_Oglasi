@@ -3,6 +3,12 @@
 
     <style>
 
+        html, body {
+            margin: 0;
+            height: 100%;
+
+                   }
+
         .glavni{
 
             margin-top:50px;
@@ -18,13 +24,18 @@
 
 
             width:33%;
-            color:white;
-            background-color:black;
+            color:black;
+            background-color:white;
             height:40px;
             display:flex;
             justify-content:center;
             align-items:center;
             cursor:pointer;
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+            border-left:1px solid black;
+            border-right:1px solid black;
+            border-radius:5px;
 
         }
 
@@ -406,6 +417,21 @@
 
         }
 
+        .prostor{
+
+            width:100%;
+            height:230px;
+
+        }
+
+        .switch{
+
+            background-color:black;
+            color:white;
+
+
+        }
+
     </style>
     <script src="jquery-3.3.1.min.js"></script>
 </asp:Content>
@@ -448,6 +474,8 @@
 
     </div>
 
+    <div class="prostor"></div>
+
 
     <script>
 
@@ -465,6 +493,16 @@
 
                 //$("html").css("cursor", "wait");
                 //$(".dugme").css("cursor", "wait");
+
+                   if (document.getElementById("poruke").classList.contains("switch")) {
+
+
+                    document.getElementById("poruke").classList.remove("switch");
+
+                }
+
+
+                $("#oglas").addClass("switch");
 
                 var objekat = { offset: 0, tip_pretrage: 1 };
 
@@ -533,6 +571,19 @@
 
 
             $("#poruke").click(function () {
+
+              
+
+
+                if (document.getElementById("oglas").classList.contains("switch")) {
+
+
+                    document.getElementById("oglas").classList.remove("switch");
+
+                }
+
+
+                $("#poruke").addClass("switch");
 
                 $.ajax({
                     url: "Korisnicka_strana.aspx/Poruke",
