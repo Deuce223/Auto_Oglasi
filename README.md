@@ -50,11 +50,10 @@ TEHNIČKE INFORMACIJE
 
 **BAZA**
 
-1.Baza se sastoji iz 24 tabele.Glava tabela Auti poseduje sve informacije koje
+1.Baza se sastoji iz 22 tabele.Glava tabela Auti poseduje sve informacije koje
 ce posedovati jedan oglas bez obzira o kom autu je reč.Dodatna oprema automobila
-je smeštena u posebnu tabelu Dodatna.Ako je korisnik odabrao da unese slike
-linkovi slika ce se naci u tabeli Slike.Tabele Dodatna i Slike su sa glavnom
-tabelom Auti povezane preko foreign key-a.
+je smeštena u posebnu tabelu Dodatna koja je preko foreign key-a povezana sa
+glavnom tabelom Auti.
 
 Tabela Korisnici sadrži informacije vezane za registrovane korisnike, gde su
 brojevi telefona i nivo pristupa izdvojeni u tabele Telefoni i Ovlašćenja koje
