@@ -761,7 +761,7 @@ margin-top:5px;
     </div>
 
    
-
+<%--    <asp:Button ID="drugiTriger" runat="server" Text="Button" OnClick="Button1_Click" />--%>
 
       <script>
 
@@ -882,12 +882,27 @@ margin-top:5px;
 
                 var marka = $("#ContentPlaceHolder1_DropDownList1").val();
                 var model = $("#ContentPlaceHolder1_DropDownList2").val();
+
+
       
 
                 var karoserija = [];
                 nizListBox("ContentPlaceHolder1_ListBox2", karoserija);
                 var gorivo = [];
                 nizListBox("ContentPlaceHolder1_ListBox1", gorivo);
+
+                //if (karoserija.length != 0) {
+
+                //    for (i = 0; i < karoserija.length; i++) {
+
+
+                //        alert(karoserija[i]);
+
+                //    }
+
+
+                //}
+
 
 
 
@@ -1532,6 +1547,8 @@ margin-top:5px;
 
             function paging_osvezavanje(obk_primljeni)
             {
+
+               // alert("radi");
                 //mozda moze i sa offsetom
              //   poslati je uvek zadnji, nemas histori za njega tj prethodni sacuvan !!!
 
@@ -1631,6 +1648,136 @@ margin-top:5px;
 
           })
 
+          //function restart_pretraga(obk) {
+
+
+
+          //    alert(obk.marka)
+
+            
+          //    $("#ContentPlaceHolder1_DropDownList1").val(obk.marka);
+
+
+          //    //if (obk.model != null) {
+
+          //    //    alert(obk.model);
+
+          //    //    document.getElementById("ContentPlaceHolder1_drugiTriger").setAttribute("Text", obk.model)
+          //    //    //document.getElementById("ContentPlaceHolder1_drugiTriger").setAttribute("name", obk.model)
+          //    //    alert(document.getElementById("ContentPlaceHolder1_drugiTriger").getAttribute("Text"));
+
+
+          //    //    document.getElementById("ContentPlaceHolder1_drugiTriger").click();
+
+
+          //    //}
+        
+
+
+          //    //alert(obk.model);
+
+          
+
+          //    //  //var karoserija = [];
+          //    //  nizListBox("ContentPlaceHolder1_ListBox2", karoserija);
+          //    //  //var gorivo = [];
+          //    //  nizListBox("ContentPlaceHolder1_ListBox1", gorivo);
+
+          //      document.getElementById("ContentPlaceHolder1_drugiTriger").click();
+
+          //      $("#ContentPlaceHolder1_DropDownList5").val(obk.vrata)
+          //      $("#ContentPlaceHolder1_DropDownList6").val(obk.lokacija) 
+
+          //      var godiste = [];
+          //      $("#ContentPlaceHolder1_DropDownList7").val(obk.godiste[0]);
+          //      $("#ContentPlaceHolder1_DropDownList8").val(obk.godiste[1]);
+          //      //godiste.push(datum1);
+          //      //godiste.push(datum2);
+
+          //      var cena = [];
+          //      $("#ContentPlaceHolder1_Text1").val(obk.cena[0]);
+          //      $("#ContentPlaceHolder1_Text2").val(obk.cena[1]);
+          //      //cena.push(cena1);
+          //      //cena.push(cena2);
+
+
+          //    KontraNizListBox("ContentPlaceHolder1_ListBox1", obk.gorivo);
+          //    KontraNizListBox("ContentPlaceHolder1_ListBox2", obk.karoserija);
+
+          //    //    if (obk.model != null) {
+
+          //    //    alert(obk.model);
+          //    //     $("#ContentPlaceHolder1_DropDownList2").val(obk.model);
+
+          //    //}
+
+          //}
+
+          //     function KontraNizListBox(id, niz){
+
+          //         alert("ulazi u metodu");
+
+          //         var Elementi = document.getElementById(id).children
+          //         var duzinaniza = niz.length
+
+          //         alert(Elementi.length);
+          //         alert(duzinaniza);
+
+
+          //         if (duzinaniza == 0) {
+
+
+          //             for (k = 0; k < Elementi.length; k++) {
+
+          //                 if (Elementi[k].selected) {
+
+
+          //                     Elementi[k].selected = false;
+          //                 }
+
+
+
+          //             }
+
+
+
+          //         }
+
+          //         else {
+
+          //                 for (i = 0; i < duzinaniza; i++) {
+
+          //             for (j = 0; j < Elementi.length; j++) {
+
+                           
+          //                 if (Elementi[j].value == niz[i]) {
+
+          //                     alert(niz[i]);
+          //                     alert(Elementi[j].value)
+          //                     Elementi[j].selected = true;
+          //                     break;
+
+
+          //                 }
+
+          //                 else {
+
+          //                     alert("usao OVDE!!!!")
+          //                     Elementi[j].selected = false;
+
+          //                 }
+
+
+          //          }
+
+
+          //      }
+
+
+
+          //         }
+
+          //  }
 
 
             window.onpopstate = function (event) {
@@ -1641,6 +1788,8 @@ margin-top:5px;
                 var x = event.state;
                 izlistavanjeSadrzaja(x.dobijen);
                 paging_osvezavanje(x.dobijen);
+                restart_pretraga(objekatPocetni);
+                
 
             }
 

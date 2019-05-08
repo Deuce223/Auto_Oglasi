@@ -128,7 +128,14 @@ namespace WebApplication42
                                 {
 
                                    // naredba.Append(" AND " + ggg.Name + " = " + klon[i]);
-                                    naredba1.Append(" AND Auti." + ggg.Name + " = " + klon[i]);
+                                    naredba1.Append(" AND Auti." + ggg.Name + " IN (" + klon[i]);
+
+                                    if(klon.Length < 2)
+                                    {
+
+                                        naredba1.Append(")");
+
+                                    }
 
 
                                 }
@@ -137,7 +144,14 @@ namespace WebApplication42
                                 {
 
                                    // naredba.Append(" OR " + ggg.Name + " = " + klon[i]);
-                                    naredba1.Append(" OR Auti." + ggg.Name + " = " + klon[i]);
+                                    naredba1.Append(", " + klon[i]);
+
+                                    if(i == klon.Length - 1)
+                                    {
+
+                                        naredba1.Append(")");
+
+                                    }
 
                                 }
 
@@ -157,7 +171,15 @@ namespace WebApplication42
                                 {
 
                                    // naredba.Append(" WHERE " + ggg.Name + " = " + klon[i]);
-                                    naredba1.Append(" WHERE Auti." + ggg.Name + " = " + klon[i]);
+                                    naredba1.Append(" WHERE Auti." + ggg.Name + " IN (" + klon[i]);
+
+
+                                    if (klon.Length < 2)
+                                    {
+
+                                        naredba1.Append(")");
+
+                                    }
 
 
                                 }
@@ -166,7 +188,14 @@ namespace WebApplication42
                                 {
 
                                   //  naredba.Append(" OR " + ggg.Name + " = " + klon[i]);
-                                    naredba1.Append(" OR Auti." + ggg.Name + " = " + klon[i]);
+                                    naredba1.Append(", " + klon[i]);
+
+                                    if (i == klon.Length - 1)
+                                    {
+
+                                        naredba1.Append(")");
+
+                                    }
 
                                 }
                             }
@@ -364,8 +393,15 @@ namespace WebApplication42
                                 if (i == 0)
                                 {
 
-                                    naredba.Append(" AND " + ggg.Name + " = " + klon[i]);
+                                    naredba.Append(" AND " + ggg.Name + " IN (" + klon[i]);
                                     
+                                    if(klon.Length < 2)
+                                    {
+
+
+                                        naredba.Append(")");
+
+                                    }
 
 
                                 }
@@ -373,8 +409,16 @@ namespace WebApplication42
                                 else
                                 {
 
-                                    naredba.Append(" OR " + ggg.Name + " = " + klon[i]);
-                                    
+                                    naredba.Append(", " + klon[i]);
+
+                                    if (i == klon.Length - 1)
+                                    {
+
+
+                                        naredba.Append(")");
+
+                                    }
+
 
                                 }
 
@@ -393,8 +437,15 @@ namespace WebApplication42
                                 if (i == 0)
                                 {
 
-                                    naredba.Append(" WHERE " + ggg.Name + " = " + klon[i]);
-                                    
+                                    naredba.Append(" WHERE " + ggg.Name + " IN (" + klon[i]);
+
+                                    if (klon.Length < 2)
+                                    {
+
+
+                                        naredba.Append(")");
+
+                                    }
 
 
                                 }
@@ -402,8 +453,18 @@ namespace WebApplication42
                                 else
                                 {
 
-                                    naredba.Append(" OR " + ggg.Name + " = " + klon[i]);
-                                   
+                                    naredba.Append(", " + klon[i]);
+
+                                    if (i == klon.Length - 1)
+                                    {
+
+
+                                        naredba.Append(")");
+
+                                    }
+
+
+
 
                                 }
                             }

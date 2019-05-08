@@ -669,7 +669,43 @@ namespace WebApplication42
 
         }
 
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
 
+        //    string klasa = drugiTriger.Text;
+
+
+
+        //    string vrednost = DropDownList1.SelectedValue;
+
+        //    if (DropDownList1.SelectedValue != "")
+        //    {
+        //        SqlConnection conn = new SqlConnection(Konekcija.CS());
+        //        DataTable model = new DataTable();
+        //        SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM Modeli WHERE Marka = " + DropDownList1.SelectedValue, conn);
+        //        adapt.Fill(model);
+
+        //        DropDownList2.DataSource = model;
+        //        DropDownList2.DataTextField = "Model";
+        //        DropDownList2.DataValueField = "ID";
+        //        DropDownList2.DataBind();
+
+        //        DropDownList2.Items.Insert(0, new ListItem("", ""));
+        //        DropDownList2.SelectedIndex = 1;
+        //        //drugiTriger.Attributes.Remove("class");
+        //        //DropDownList2.SelectedValue = klasa;
+
+        //    }
+
+        //    else
+        //    {
+
+        //        DropDownList2.Items.Clear();
+        //        //drugiTriger.Attributes.Remove("class");
+        //    }
+
+
+        //}
     } 
 
 
