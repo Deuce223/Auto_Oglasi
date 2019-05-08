@@ -61,6 +61,21 @@ overflow:auto;
 
 }
 
+
+#ContentPlaceHolder2_prvi_desno{
+
+
+    font-weight:700;
+
+}
+
+#ContentPlaceHolder2_drugi_desno{
+
+
+    font-weight:700;
+
+}
+
 #ContentPlaceHolder2_side{
 
 width:192px;
@@ -82,6 +97,8 @@ text-align:center;
 .mojaL{
 
     float:left;
+    width:35%;
+        
 
 }
 
@@ -89,6 +106,7 @@ text-align:center;
 
     
     float:right;
+    width:35%;
 }
 
 .levo{
@@ -588,8 +606,8 @@ background-color:rgba(0,0,0,1);
                 <img id="slide" src="trav3.jpg" />
                     <div id="strelice" class="strelice">
 
-                    <div id="str1" class="mojaL"><img src="desno.png" width="40" height="40" /></div>
-                     <div id="str2" class="mojaD"><img src="levo.png" width="40" height="40" /></div>
+                    <div id="str1" class="mojaL"><img src="desno.png" style="max-height:30%;max-width:30%" /></div>
+                     <div id="str2" class="mojaD"><img src="levo.png" style="float:right;max-height:30%;max-width:30%"/></div>
                         </div>
 
                     	<div id="X" class="X">X</div>
@@ -1030,13 +1048,13 @@ clearInterval(pokretac);
              }
 
 
-        document.getElementById("odustani").addEventListener("click", function () {
+        //document.getElementById("odustani").addEventListener("click", function () {
 
 
-            history.back();
+        //    history.back();
 
 
-        })
+        //})
 
 
 
